@@ -13,17 +13,23 @@ html {
   background-size: cover;
   /*background-color: lightblue;*/
 }
-
 a:link,
 a:visited {
   text-decoration: none;
   cursor: auto;
 }
-
-nav {
+ul {
   list-style-type: none;
+  margin: 0;
+  padding: 0;
 }
-
+.partial_underline {
+  border-color: #f05f44;
+  border-width: 3px;
+  width: 65px;
+  margin: 0;
+  padding: 0;
+}
 #top_container {
   position: absolute;
   height: fit-content;
@@ -43,7 +49,6 @@ nav {
   border: 0px;
   padding: 0px;
 }
-
 #top_left h1 {
   font-family: dancing script;
   font-size: 5em;
@@ -56,6 +61,11 @@ nav {
   margin: 0;
   padding: 0;
 }
+
+#top_left p {
+  margin: 0;
+  padding: 0;
+}
 #top_right {
   float: right;
   width: 50%;
@@ -63,9 +73,15 @@ nav {
 #top_right img {
   float: right;
 }
+#top_divider {
+  position: absolute;
+  top: 285px;
+  left: 60px;
+  width: 1092px;
+}
 #outer_container {
   position: absolute;
-  top: 217px;
+  top: 320px;
   right: 0px;
   bottom: 0px;
   left: 0px;
