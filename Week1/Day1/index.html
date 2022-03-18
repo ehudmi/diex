@@ -9,6 +9,48 @@
     nav {
       list-style-type: none;
     }
+    .exercise {
+      font-size: 13px;
+      width: 600px;
+      height: 100px;
+      line-height: 2em;
+      background-color: lightgreen;
+      margin-left: 100px;
+      border: 2px solid darkgreen;
+      padding-left: 10px;
+      padding-right: 150px;
+    }
+    #box1 {
+      display: inline-block;
+      height: 20px;
+      width: 10px;
+      background-color: blue;
+    }
+    #box2 {
+      display: inline-block;
+      height: 20px;
+      width: 10px;
+      background-color: white;
+    }
+    #box3 {
+      display: inline-block;
+      height: 20px;
+      width: 10px;
+      background-color: red;
+    }
+    #first li {
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+    #p1 {
+      color: white;
+      background-color: pink;
+    }
+    #p2 {
+      background-color: lightblue;
+      margin: 30px;
+      padding: 30px;
+    }
   </style>
   <head>
     <title>Who I am</title>
@@ -80,5 +122,54 @@
     </table>
 
     <blockquote>To thine own-self be true</blockquote>
+
+    <p class="exercise">
+      Create a structured HTML file<br />
+
+      Copy this paragraph and style it with Inline CSS first and then with a CSS
+      stylesheet.<br />
+
+      <i
+        >Hello Everyone, Congratulation on your first day of coding at
+        DevelopersInstitute</i
+      ><br />
+
+      What happens if you style this paragraph both with Inline CSS and with a
+      CSS stylesheet ?<br />
+    </p>
+    <div id="box1"></div>
+    <div id="box2"></div>
+    <div id="box3"></div>
+
+    <div id="first">
+      <ul>
+        <li>What is Lorem Ipsum?</li>
+        <li style="color: blue">
+          Lorem Ipsum has been the industry's standard dummy text ever since the
+          1500s,
+        </li>
+        <li>
+          when an unknown printer took a galley of type and scrambled it to make
+          a type specimen book.
+        </li>
+      </ul>
+    </div>
+    <div id="second">
+      <p id="p1">
+        It has survived not only five centuries, but also the leap into
+        electronic typesetting,
+      </p>
+      <ol>
+        <li>
+          remaining essentially unchanged. It was popularised in the 1960s with
+          the release of Letraset sheets
+        </li>
+      </ol>
+      <p id="p2">
+        containing Lorem Ipsum passages, and more recently with desktop
+        publishing software like Aldus PageMaker including versions of Lorem
+        Ipsum.
+      </p>
+    </div>
   </body>
 </html>
