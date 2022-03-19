@@ -1,0 +1,25 @@
+body,
+html {
+  width: 100vw;
+  height: 100vh;
+}
+#cats h3 {
+  text-decoration: underline;
+}
+#cat_senses {
+  padding-left: 100px;
+}
+.media {
+  /* position: static; */
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+.media img {
+  object-fit: contain;
+  height: 300px;
+  width: auto;
+  border: 5px solid orangered;
+}
