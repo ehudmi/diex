@@ -1,0 +1,26 @@
+body,
+html {
+  width: fit-content;
+  height: fit-content;
+}
+body {
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-position: left top;
+  background-attachment: fixed;
+  background: url(./assets/Loki-Thor-2011-image-loki-thor-2011-36091983-1920-1080.jpg)
+    no-repeat center center fixed;
+}
+article {
+  width: 1000px;
+  height: 600px;
+}
+#avengers_logo {
+  height: 50px;
+  width: fit-content;
+}
+ul {
+  padding: 0;
+}
