@@ -1,0 +1,58 @@
+.grid_area {
+  width: 600px;
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr;
+  grid-template-rows: 100px 300px 150px 250px 200px 100px;
+  grid-gap: 10px;
+  grid-template-areas:
+    "box1 box1 box1"
+    "box2 box3 box3"
+    "box4 box3 box3"
+    "box4 box5 box5"
+    "box6 box6 box7"
+    "box8 box8 box8";
+  margin: 20px;
+  padding: 10px;
+}
+.grid_area > * {
+  font-size: 25px;
+  color: white;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.header {
+  background: skyblue;
+  grid-area: box1;
+}
+.hero {
+  background: plum;
+  grid-area: box2;
+  /* grid-row: 3; */
+}
+.main_content {
+  background: gold;
+  grid-area: box3;
+  text-align: center;
+}
+.sidebar {
+  background: greenyellow;
+  grid-area: box4;
+}
+.extra_content {
+  background: lightslategray;
+  grid-area: box5;
+}
+.related_images {
+  background: green;
+  grid-area: box6;
+}
+.related_posts {
+  background: lightpink;
+  grid-area: box7;
+}
+.footer {
+  background: orange;
+  grid-area: box8;
+  /* grid-column: 1; */
+}
