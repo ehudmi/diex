@@ -1,14 +1,4 @@
-/* .pattern-checks-md {
-  height: 100px;
-  width: 100px;
-} */
-/* div {
-  font-size: 25px;
-  color: white;
-} */
-
 .grid_area {
-  /* border: 5px solid blue; */
   width: 600px;
   display: grid;
   grid-template-columns: 50px 300px 50px;
@@ -16,8 +6,6 @@
   grid-gap: 5px;
   margin: 20px;
   padding: 10px;
-  /* grid-template-rows: 50px 175px 25px; */
-  /* height: 500px; */
 }
 .grid_area > * {
   border: 1px solid black;
@@ -26,7 +14,6 @@
 
 .left_side {
   background: pink;
-  /* grid-area: left; */
 }
 .mid {
   background: yellow;
@@ -35,8 +22,6 @@
 }
 .right_side {
   background: aquamarine;
-  /* grid-area: right; */
-  /* grid-row: 3; */
 }
 .my_flex {
   grid-column: 2 /2;
