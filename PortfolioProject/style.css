@@ -8,10 +8,15 @@ html,
 a {
   font-family: "Raleway";
 }
-.h1,
-.h2,
-.h3 {
+header,
+.card-title {
   color: orange;
+}
+#about_me > p.h4 {
+  color: aqua;
+}
+#about_me {
+  border-color: aqua !important;
 }
 a.nav-link {
   color: white;
@@ -19,6 +24,28 @@ a.nav-link {
 nav.navbar > div,
 .btn.btn.btn-primary.my-2 {
   background-color: orange;
+  border: 0;
+}
+.portfolio-img {
+  height: 350px;
+}
+.card-img-top {
+  height: 200px;
+}
+.blog-link {
+  text-decoration: none;
+  color: blue;
+}
+.card.full-width {
+  width: 100%;
+}
+.team-name {
+  color: white;
+  background-color: orange;
+  text-align: center;
+}
+i.fa-brands {
+  color: orange;
 }
 #overlay {
   position: fixed; /* Sit on top of the page content */
