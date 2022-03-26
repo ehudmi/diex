@@ -41,9 +41,9 @@ nav.navbar > div,
 }
 .team-name {
   color: white;
-  /* background-color: orange; */
+  background-color: orange;
   text-align: center;
-  background: linear-gradient(45deg, white 0 20%, orange 50% 100%);
+  border-bottom-left-radius: 100%;
 }
 i.fa-brands {
   color: orange;
