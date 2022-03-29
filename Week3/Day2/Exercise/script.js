@@ -4,20 +4,46 @@ let y = "dinner";
 console.log("I eat " + x + " at every " + y);
 
 // Exercise 2
+// part 1
 let myWatchedSeries = ["black mirror", "money heist", "the big bang theory"];
 let myWatchedSeriesLength = myWatchedSeries.length;
-let myWatchedSeriesSentence =
-  myWatchedSeries[0] + ", " + myWatchedSeries[1] + ", " + myWatchedSeries[2];
-console.log(myWatchedSeriesSentence);
-console.log(
-  "I watched " + myWatchedSeriesLength + " series: " + myWatchedSeriesSentence
+let myWatchedSeriesSentence = myWatchedSeries.slice(
+  0,
+  myWatchedSeriesLength - 1
 );
+myWatchedSeriesSentence = myWatchedSeriesSentence.join(", ");
+myWatchedSeriesSentence = `${myWatchedSeriesSentence} and ${
+  myWatchedSeries[myWatchedSeries.length - 1]
+}`;
+console.log(
+  `I watched ${myWatchedSeriesLength} series: ${myWatchedSeriesSentence}`
+);
+
+// part 2
+myWatchedSeries.splice(
+  myWatchedSeries.indexOf("the big bang theory"),
+  1,
+  "friends"
+);
+myWatchedSeries.push("sopranos");
+myWatchedSeries.unshift("gomorra");
+myWatchedSeries.splice(myWatchedSeries.indexOf("black mirror"), 1);
+console.log(
+  myWatchedSeries
+    .slice(
+      myWatchedSeries.indexOf("money heist"),
+      myWatchedSeries.indexOf("money heist") + 1
+    )
+    .toString()
+    .charAt(2)
+);
+console.log(myWatchedSeries);
 
 // Exercise 3
 let celsiusTemperature = 35;
 let ferenTemperature = (celsiusTemperature / 5) * 9 + 32;
 
-console.log(celsiusTemperature + "C is " + ferenTemperature + "K");
+console.log(`${celsiusTemperature} C is ${ferenTemperature} K`);
 
 // Exercise 4
 let c;
