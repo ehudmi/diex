@@ -33,12 +33,12 @@ for (let i in colors) {
 }
 
 // Exercise 3
-// let inputNumber = "";
-// console.log(typeof inputNumber);
+let inputNumber = "";
+console.log(typeof inputNumber);
 
-// do {
-//   inputNumber = prompt(`Give me a number`);
-// } while (Number(inputNumber) < 10);
+do {
+  inputNumber = prompt(`Give me a number`);
+} while (Number(inputNumber) < 10);
 
 // Exercise 4
 let building = {
@@ -64,6 +64,8 @@ console.log(
   building.numberOfAptByFloor.thirdFloor
 );
 // Console.log the name of the second tenant and the number of rooms he has in his apartment
+let tenantNameX = building.nameOfTenants[1];
+console.log(tenantNameX[0]);
 console.log(building.nameOfTenants[1], building.numberOfRoomsAndRent.dan[0]);
 // Check if the sum of Sarah’s and David’s rent is bigger than Dan’s rent. If it is, than increase Dan’s rent to 1200
 if (
