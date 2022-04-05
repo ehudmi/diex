@@ -3,10 +3,11 @@
 let wordArray = prompt(`Give me your wise words`);
 
 wordArray = wordArray.split(" ");
-console.log(wordArray);
+// console.log(wordArray);
 
 let longestWord = 0;
 let starArray = [];
+
 // function countLetters() {
 for (let i in wordArray) {
   if (wordArray[i].length > longestWord) {
