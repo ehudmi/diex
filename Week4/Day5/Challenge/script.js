@@ -5,6 +5,15 @@
 // Bonus: Do the same process to create the moons.
 // Be careful, each planet has a certain amount of moons. How should you display them?
 // Should you still use an array for the planets ? Or an array of objects ?
+// let planet  =  [
+//   { name: "Venus", moons: [] },
+//   { name: "Earth", moons: ["moon"] },
+//   { name: 'Mars', moons: ["Deimos", "Phobos"] },
+//   { name: 'Jupiter', moons: ["IO", "Europa", "Ganymede"] },
+//   { name: 'Sarturna', moons: ["Ymir", "Paaliaq", "Siarnaq", "Tarvos", "Kiviuq", "Ijiraq", "Thrymr"] },
+//   { name: 'Uranus', moons: ["Juliette", "Portia", "Cressida", "Desdémone", "Rosalinde", "Belinda", "Cordélia"] },
+//   { name: 'Neptune', moons: ["Despina", "Galatea", "HippoCamp"] }
+// ]
 
 const planetSolarSystem = [
   { planet: "Earth", color: "blue", moons: ["1"] },

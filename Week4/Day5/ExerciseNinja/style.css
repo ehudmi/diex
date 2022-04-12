@@ -1,0 +1,21 @@
+* {
+  font-family: "PT Sans", sans-serif;
+}
+
+body {
+  width: 50vw;
+  padding: 50px;
+}
+table,
+td,
+th {
+  border: solid 1px black;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+td,
+th {
+  width: 60px;
+  height: 45px;
+  text-align: center;
+}
