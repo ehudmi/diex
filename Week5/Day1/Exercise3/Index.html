@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exercise</title>
+  </head>
+  <body>
+    <style>
+      div {
+        border: 2px solid blue;
+      }
+      button {
+        border: 2px solid red;
+      }
+    </style>
+
+    <div id="div">
+      <button id="jsstyle">Style</button>
+    </div>
+
+    <script>
+      let x = document.getElementById("jsstyle");
+      let y = document.getElementById("div");
+
+      x.addEventListener("click", XRespondClick);
+      y.addEventListener("click", YRespondClick);
+      x.addEventListener("mouseover", respondMouseOver);
+      x.addEventListener("mouseenter", respondMouseEnter);
+      x.addEventListener("mouseleave", respondMouseLeave);
+
+      function respondMouseOver() {
+        x.style.backgroundColor = "blue";
+      }
+
+      function respondMouseEnter() {
+        x.style.backgroundColor = "red";
+      }
+
+      function respondMouseLeave() {
+        x.style.backgroundColor = "green";
+      }
+
+      function XRespondClick(e) {
+        x.style.backgroundColor = "yellow";
+        e.stopPropagation();
+      }
+
+      function YRespondClick(e) {
+        y.style.backgroundColor = "purple";
+      }
+    </script>
+  </body>
+</html>
