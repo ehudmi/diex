@@ -7,7 +7,23 @@ function createOption(arg) {
   let newOption = document.createElement("option");
   let newText = document.createTextNode(arg);
   mySelect.appendChild(newOption);
-  mySelect.appendChild(newText);
+  mySelect[mySelect.length - 1].appendChild(newText);
 }
 
-createOption("work");
+createOption("Work");
+
+function createFirst(arg) {
+  let newOption = document.createElement("option");
+  let newText = document.createTextNode(arg);
+  mySelect.insertBefore(newOption, mySelect[0]);
+  mySelect[0].appendChild(newText);
+}
+
+createFirst("Primary School");
+
+mySelect.selectedIndex = 3;
+
+let myButton = document.querySelector("button");
+myButton.addEventListener("click", function () {
+  alert(mySelect.value);
+});
