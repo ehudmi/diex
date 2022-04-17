@@ -1,19 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Exercise</title>
+    <meta charset="utf-8" />
+    <title>Challenge: Mad Libs</title>
   </head>
   <body>
-    <form id="form1" onsubmit="getvalue()">
-      <label>First name: </label
-      ><input type="text" name="fname" value="David" /><br />
-      <label>Last name: </label
-      ><input type="text" name="lname" value="BenGurion" /><br />
-      <input type="submit" value="Submit" />
-    </form>
+    <h1>Mad Libs</h1>
+
+    <ul>
+      <li>Noun: <input type="text" id="noun" /></li>
+      <li>Adjective: <input type="text" id="adjective" /></li>
+      <li>Someone's Name: <input type="text" id="person" /></li>
+      <li>Verb: <input type="text" id="verb" /></li>
+      <li>A place: <input type="text" id="place" /></li>
+    </ul>
+
+    <button id="lib-button">Lib it!</button>
+
+    <p>
+      Generated story:
+      <span id="story"></span>
+    </p>
+
     <script src="script.js"></script>
   </body>
 </html>
