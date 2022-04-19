@@ -36,7 +36,6 @@ function makeStory() {
   ) {
     alert("The data is not complete");
   } else {
-    // let myStory=document.createElement("textarea")
     let storyText = document.createTextNode(madArray[0].join(" "));
     document.querySelector("span").appendChild(storyText);
   }
