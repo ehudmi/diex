@@ -1,0 +1,28 @@
+.quote-container {
+  position: absolute;
+  top: 10vh;
+  left: 25vw;
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  width: auto;
+  font-size: x-large;
+}
+q {
+  height: auto;
+  white-space: pre-wrap;
+  width: 25em;
+  font-size: xx-large;
+}
+.blockquote-footer {
+  padding-top: 20px;
+}
+
+.form-inline {
+  width: 100%;
+}
+
+#searchFormButtons {
+  display: flex;
+  justify-content: space-evenly;
+}
