@@ -18,7 +18,7 @@ const winBattle = () => {
 
 let experiencePoints = 0;
 
-winBattle(true) ? (experiencePoints = 10) : (experiencePoints = 5);
+winBattle(true) ? 10 : 2;
 
 console.log(experiencePoints);
 
@@ -28,9 +28,8 @@ console.log(experiencePoints);
 // Use ternary operator
 // Check out the example below to see the expected output
 
-const isString = (arg) => {
-  return typeof arg === "string" ? "this is a string" : "this is not a string";
-};
+const isString = (arg) =>
+  typeof arg === "string" ? "this is a string" : "this is not a string";
 
 console.log(isString("hello"));
 console.log(isString([1, 2, 4, 0]));
