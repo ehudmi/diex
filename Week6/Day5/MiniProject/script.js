@@ -132,13 +132,20 @@ const updateSearchQuote = () => {
   createQuote();
 };
 
-const nextPrevQuote = (i) => {
-  if (i <= 1 && currentQuote < myQuotes.length - 2) {
-    currentQuote = currentQuote + i;
+const nextQuote = () => {
+  if (currentQuote < myQuotes.length - 1) {
+    currentQuote = currentQuote + 1;
   } else currentQuote = 0;
   deleteQuote();
-  //   searchQuote();
-  //   createQuote();
+  createQuote();
+};
+
+const prevQuote = () => {
+  if (currentQuote > 0) {
+    currentQuote = currentQuote - 1;
+  } else currentQuote = myQuotes.length - 1;
+  deleteQuote();
+  createQuote();
 };
 
 window.addEventListener("load", firstQuote);
@@ -172,8 +179,8 @@ document
 
 document
   .querySelector(`button[id="buttonNext"]`)
-  .addEventListener("click", nextPrevQuote(1));
+  .addEventListener("click", nextQuote);
 
 document
   .querySelector(`button[id="buttonPrevious"]`)
-  .addEventListener("click", nextPrevQuote(-1));
+  .addEventListener("click", prevQuote);
