@@ -53,7 +53,7 @@ const inputQuote = quoteForm.querySelector(`input[id="inputQuote"]`);
 const inputAuthor = quoteForm.querySelector(`input[id="inputAuthor"]`);
 const displayInfo = document.querySelector(`input[id="displayInfo"]`);
 const searchInput = searchForm.querySelector(`input[id="searchInput"]`);
-let currentQuote = null;
+let currentQuote;
 
 const createRandom = () => {
   let randomNum = 0;
@@ -132,23 +132,16 @@ const updateSearchQuote = () => {
   createQuote();
 };
 
-const nextQuote = () => {
-  if (currentQuote < myQuotes.length - 1) {
-    currentQuote = currentQuote + 1;
-  } else currentQuote = 0;
-  deleteQuote();
-  createQuote();
-};
-
-const prevQuote = () => {
-  if (currentQuote > 0) {
-    currentQuote = currentQuote - 1;
-  } else currentQuote = myQuotes.length - 1;
+const nextPrevQuote = (i) => {
+  currentQuote += i;
+  if (currentQuote < 0) currentQuote = myQuotes.length - 1;
+  if (currentQuote > myQuotes.length - 1) currentQuote = 0;
   deleteQuote();
   createQuote();
 };
 
 window.addEventListener("load", firstQuote);
+
 document
   .querySelector(`button[id="buttonGenerate"]`)
   .addEventListener("click", genQuote);
@@ -177,10 +170,12 @@ document
   .querySelector(`button[id="buttonSearch"]`)
   .addEventListener("click", updateSearchQuote);
 
-document
-  .querySelector(`button[id="buttonNext"]`)
-  .addEventListener("click", nextQuote);
+document.querySelector("#buttonNext").addEventListener("click", function () {
+  nextPrevQuote(1);
+});
 
 document
-  .querySelector(`button[id="buttonPrevious"]`)
-  .addEventListener("click", prevQuote);
+  .querySelector("#buttonPrevious")
+  .addEventListener("click", function () {
+    nextPrevQuote(-1);
+  });

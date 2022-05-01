@@ -55,8 +55,8 @@ for (let i in colors) {
   paletteColor.style.backgroundColor = colors[i];
 }
 
-for (let j = 0; j < 61; j++) {
-  for (h = 0; h < 25; h++) {
+for (h = 0; h < 24; h++) {
+  for (let j = 0; j < 60; j++) {
     let addCanvasItem = document.createElement("div");
     let canvas = document.querySelector(".canvas-grid");
     let canvasItem = canvas.appendChild(addCanvasItem);
