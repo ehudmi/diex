@@ -53,21 +53,21 @@ const inputQuote = quoteForm.querySelector(`input[id="inputQuote"]`);
 const inputAuthor = quoteForm.querySelector(`input[id="inputAuthor"]`);
 const displayInfo = document.querySelector(`input[id="displayInfo"]`);
 const searchInput = searchForm.querySelector(`input[id="searchInput"]`);
-let currentQuote;
+let currentQuoteId;
 
 const createRandom = () => {
   let randomNum = 0;
   do {
     randomNum = Math.floor(Math.abs(Math.random() * (myQuotes.length - 1)));
-  } while (currentQuote == randomNum);
-  currentQuote = randomNum;
+  } while (currentQuoteId == randomNum);
+  currentQuoteId = randomNum;
 };
 
 const createQuote = () => {
   let quoteDiv = document.createElement("q");
   let quoteAuthor = document.createElement("figcaption");
-  let chosenQuote = myQuotes[currentQuote].quote;
-  let chosenAuthor = myQuotes[currentQuote].author;
+  let chosenQuote = myQuotes[currentQuoteId].quote;
+  let chosenAuthor = myQuotes[currentQuoteId].author;
   let insertQuote = document.createTextNode(chosenQuote);
   let insertAuthor = document.createTextNode(chosenAuthor);
   quoteSection.insertBefore(quoteDiv, quoteSection.children[1]);
@@ -108,21 +108,21 @@ const addNewQuote = () => {
 };
 
 const countAllChar = () =>
-  (displayInfo.value = myQuotes[currentQuote].quote.length);
+  (displayInfo.value = myQuotes[currentQuoteId].quote.length);
 
 const countOnlyChar = () =>
-  (displayInfo.value = myQuotes[currentQuote].quote.replace(/ /g, "").length);
+  (displayInfo.value = myQuotes[currentQuoteId].quote.replace(/ /g, "").length);
 
 const countWords = () =>
-  (displayInfo.value = myQuotes[currentQuote].quote.split(" ").length);
+  (displayInfo.value = myQuotes[currentQuoteId].quote.split(" ").length);
 
 const like = () => {
-  myQuotes[currentQuote].likes++;
-  displayInfo.value = myQuotes[currentQuote].likes;
+  myQuotes[currentQuoteId].likes++;
+  displayInfo.value = myQuotes[currentQuoteId].likes;
 };
 
 const searchQuote = () =>
-  (currentQuote = myQuotes.findIndex(
+  (currentQuoteId = myQuotes.findIndex(
     (i) => i.author.toLowerCase() == searchInput.value
   ));
 
@@ -133,14 +133,12 @@ const updateSearchQuote = () => {
 };
 
 const nextPrevQuote = (i) => {
-  currentQuote += i;
-  if (currentQuote < 0) currentQuote = myQuotes.length - 1;
-  if (currentQuote > myQuotes.length - 1) currentQuote = 0;
+  currentQuoteId += i;
+  if (currentQuoteId < 0) currentQuoteId = myQuotes.length - 1;
+  if (currentQuoteId > myQuotes.length - 1) currentQuoteId = 0;
   deleteQuote();
   createQuote();
 };
-
-window.addEventListener("load", firstQuote);
 
 document
   .querySelector(`button[id="buttonGenerate"]`)
@@ -179,3 +177,5 @@ document
   .addEventListener("click", function () {
     nextPrevQuote(-1);
   });
+
+window.addEventListener("load", firstQuote);

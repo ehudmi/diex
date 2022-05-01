@@ -9,7 +9,7 @@
   font-size: x-large;
 }
 q {
-  height: auto;
+  height: 20vh;
   white-space: pre-wrap;
   width: 25em;
   font-size: xx-large;
@@ -28,6 +28,6 @@ q {
 }
 
 #buttonContainer {
-  position: relative;
-  /* top: 45vh; */
+  display: inline-flex;
+  justify-content: space-between;
 }
