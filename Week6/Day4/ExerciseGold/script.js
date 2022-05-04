@@ -1,12 +1,33 @@
-// Challenge - True or False
+// Exercise 1 : Nested Functions
 
-let testArray = [1, 2, 3, 4];
+// Using the code below, and before executing it, predict the outcome and explain how you came to this conclusion.
 
-const allTruthy = (arr) =>
-  arr.every((val) =>
-    (val === Number(val) && val != 0) || (val === String(val) && val != "")
-      ? true
-      : false
-  );
+// Change the code below to nested arrow functions.
 
-console.log(allTruthy(testArray));
+let landscape = () => {
+  let result = "";
+
+  let flat = (x) => {
+    for (let count = 0; count < x; count++) {
+      result = result + "_";
+    }
+  };
+
+  let mountain = (x) => {
+    result = result + "/";
+    for (let counter = 0; counter < x; counter++) {
+      result = result + "'";
+    }
+    result = result + "\\";
+  };
+
+  flat(4);
+  mountain(4);
+  flat(4);
+
+  return result;
+};
+
+console.log(landscape());
+
+// Predicted result is "____/''''\____"
