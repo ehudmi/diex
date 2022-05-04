@@ -52,7 +52,7 @@ for (let i in colors) {
   let palette = document.querySelector(".palette-grid");
   let paletteColor = palette.appendChild(addColor);
   paletteColor.className = "palette-item";
-  paletteColor.style.backgroundColor = colors[i];
+  paletteColor.attributes.paletteColor.style.backgroundColor = colors[i];
 }
 
 for (h = 0; h < 24; h++) {
