@@ -28,6 +28,44 @@ let landscape = () => {
   return result;
 };
 
-console.log(landscape());
+landscape();
 
 // Predicted result is "____/''''\____"
+
+// Exercise 2 : Closure
+// Instructions
+// Analyze the code below, and before executing it, predict the outcome of the last line.
+
+const addTo = (x) => (y) => x + y;
+let addToTen = addTo(10);
+addToTen(3);
+
+// Predicted - 13
+
+// Exercise 3 : Currying
+// Instructions
+// Analyze the code below, and before executing it, predict the outcome of the last line.
+
+const curriedSum = (a) => (b) => a + b;
+curriedSum(30)(1);
+
+// Predicted - 31
+
+// Exercise 4 : Currying
+// Analyze the code below, and before executing it, predict the outcome of the last line.
+
+const curriedSum1 = (a) => (b) => a + b;
+const add5a = curriedSum1(5);
+add5a(12);
+
+// Predicted - 17
+
+// Exercise 5 : Composing
+// Analyze the code below, and before executing it, predict the outcome of the last line.
+
+const compose = (f, g) => (a) => f(g(a));
+const add1 = (num) => num + 1;
+const add5b = (num) => num + 5;
+compose(add1, add5b)(10);
+
+// Predicted - 16

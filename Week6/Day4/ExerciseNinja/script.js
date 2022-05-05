@@ -1,12 +1,27 @@
-// Challenge - True or False
+// Exercise 1 : Merge Words
+// Instructions
+// Create a function such as mergeWords('Hello')() that returns the following string: 'Hello'
+// When the function is called without any arguments return a string where all words have been merged into a sentence.
 
-let testArray = [1, 2, 3, 4];
+// For example
+// mergeWords('There')('is')('no')('spoon.')();
+// should return 'There is no spoon.'
+// Below is a verbose JavaScript solution, turn this into a currying function.
 
-const allTruthy = (arr) =>
-  arr.every((val) =>
-    (val === Number(val) && val != 0) || (val === String(val) && val != "")
-      ? true
-      : false
-  );
+function mergeWords(string) {
+  return function (nextString) {
+    if (nextString === undefined) {
+      return string;
+    } else {
+      return mergeWords(string + " " + nextString);
+    }
+  };
+}
 
-console.log(allTruthy(testArray));
+console.log(mergeWords("There")("is")("no")("spoon.")());
+
+const mergeWords1 = (string) => (nextString) => {
+  return string + " " + nextString;
+};
+
+console.log(mergeWords1("There")("is")("no")("spoon.")());
