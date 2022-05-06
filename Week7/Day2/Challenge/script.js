@@ -1,26 +1,68 @@
-//Exercise 1 : Analyzing
+//Daily Challenge: Car Inventory
 // Instructions
-// Analyze these pieces of code before executing them. What will be the outputs ?
-// ------1------
+// Part I
 
-const fruits = ["apple", "orange"];
-const vegetables = ["carrot", "potato"];
+// Create a function getCarHonda(carInventory) that takes a single parameter.
+// carInventory‘s value is an array which is an inventory of cars (see the array of objects below)
+// The function should
+// loop through the array of object and return the first car with the name “Honda”.
+// then, return a string in the format This is a {car_make} {car_model} from {car_year}.
+// Hint : Find an array method that returns the value of the first element in an array that pass a test.
+// Use the cars inventory below:
 
-const result = ["bread", ...vegetables, "chicken", ...fruits];
-console.log(result);
+let inventory = [
+  { id: 1, car_make: "Lincoln", car_model: "Navigator", car_year: 2009 },
+  { id: 2, car_make: "Mazda", car_model: "Miata MX-5", car_year: 2001 },
+  { id: 3, car_make: "Honda", car_model: "Accord", car_year: 1983 },
+  {
+    id: 4,
+    car_make: "Land Rover",
+    car_model: "Defender Ice Edition",
+    car_year: 2010,
+  },
+  { id: 5, car_make: "Honda", car_model: "Accord", car_year: 1995 },
+];
 
-// Expected - result=["bread","carrot","potato","chicken","apple","orange"]
+const getCarHonda = (element) => element.car_make === "Honda";
 
-// ------2------
+let myCar = inventory.find(getCarHonda);
 
-const country = "USA";
-console.log([...country]);
+console.log(
+  `This is a ${myCar.car_make} ${myCar.car_model} from ${myCar.car_year}`
+);
 
-// Expected country=["U","S","A"]
+// Part II
 
-// ------Bonus------
+// Create a function sortCarInventoryByYear(carInventory) that takes a single parameter.
+// carInventory‘s value is an array which is an inventory of cars (see the array of objects below)
+// the function should return an inventory that is sorted by car_year, ascending.
+// Hint : Check out this tutorial on the sort method
+// Use the cars inventory below:
 
-let newArray = [...[, ,]];
-console.log(newArray);
+// let inventory = [
+//   { id: 1, car_make: "Lincoln", car_model: "Navigator", car_year: 2009 },
+//   { id: 2, car_make: "Mazda", car_model: "Miata MX-5", car_year: 2001 },
+//   { id: 3, car_make: "Honda", car_model: "Accord", car_year: 1983 },
+//   { id: 4, car_make: "Land Rover", car_model: "Defender Ice Edition", car_year: 2010 },
+//   { id: 5, car_make: "Honda", car_model: "Accord", car_year: 1995 },
+// ];
 
-// Expected - newArray=[,,]
+const sortCarInventoryByYear = (carInventory) =>
+  carInventory.sort((x, y) => x.car_year - y.car_year);
+
+console.log(sortCarInventoryByYear(inventory));
+
+// The output should be
+
+// [
+//   { id: 3, car_make: "Honda", car_model: "Accord", car_year: 1983 },
+//   { id: 5, car_make: "Honda", car_model: "Accord", car_year: 1995 },
+//   { id: 2, car_make: "Mazda", car_model: "Miata MX-5", car_year: 2001 },
+//   { id: 1, car_make: "Lincoln", car_model: "Navigator", car_year: 2009 },
+//   {
+//     id: 4,
+//     car_make: "Land Rover",
+//     car_model: "Defender Ice Edition",
+//     car_year: 2010,
+//   },
+// ];
