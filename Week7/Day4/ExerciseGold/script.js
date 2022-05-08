@@ -9,6 +9,8 @@
 // Destructure this object DIRECTLY from the parameters (ie. Look at the Advanced Object lesson -
 //     Part II : Object destructuring used as an assignment to a function)
 
+const printFullName = (studentObj) => {};
+
 // The output of the printFullName() function should be the exact same as the displayStudentInfo function. (Exercise XP)
 
 // Exercise 2 : Keys And Values
@@ -28,6 +30,7 @@
 // Exercise 3 : Counter Class
 // Instructions
 // Analyze the code below, what will be the output?
+
 class Counter {
   constructor() {
     this.count = 0;
@@ -42,7 +45,13 @@ const counterOne = new Counter();
 counterOne.increment();
 counterOne.increment();
 
+// The increment method runs twice - counter one is {2}
+
 const counterTwo = counterOne;
 counterTwo.increment();
 
+// counterTwo references counterOne so it changes its value. it isn't a new Counter
+
 console.log(counterOne.count);
+
+// Expected - 3
