@@ -85,18 +85,9 @@ let bankAmount = 0;
 const VAT = "17";
 let details = ["+200", "-100", "+146", "+167", "-2900"];
 
-bankAmount = details.reduce((total, item) => {
-  return Number(total) + Number(item);
-});
-
-console.log(bankAmount);
-
-details.forEach((item, index, arr) => {
-  return (arr[index] = Number(item) * (Number(VAT) / 100 + 1));
-});
-
-bankAmount = details.reduce((total, item) => {
-  return Number(total) + Number(item);
-});
+bankAmount = details.reduce(
+  (acc, item) => acc + Number(item) * (Number(VAT) / 100 + 1),
+  0
+);
 
 console.log(bankAmount);

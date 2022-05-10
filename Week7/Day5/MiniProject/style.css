@@ -1,0 +1,11 @@
+#robo-container {
+  background: purple url("./assets/circuit-pattern.png") repeat;
+}
+
+nav {
+  background-image: "./assets/";
+}
+
+.card {
+  background: aqua url("./assets/card-pattern.png") repeat;
+}

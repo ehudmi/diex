@@ -16,17 +16,17 @@ console.log(calcSum(3, 4));
 // Finally, use a one line arrow function and invoke it.
 
 function convertWeight(kg) {
-  return kg / 1000;
+  return kg * 1000;
 }
 
 const convertWeight1 = function (kg) {
-  return kg / 1000;
+  return kg * 1000;
 };
 
 // The difference between function declaration and expression is that declared functions get hoisted.
 // Expressed functions don't get hoisted and their variables remain within their scope
 
-const convertWeight2 = (kg) => kg / 1000;
+const convertWeight2 = (kg) => kg * 1000;
 
 // Exercise 3 : Fortune Teller
 

@@ -58,9 +58,9 @@ console.log(users1);
 // Modify the outcome of part 1, by multiplying the user’s ID by 2.
 // Excepted output: [ [ 'user1', 36546 ], [ 'user2', 185666 ], [ 'user3', 180630 ] ]
 
-users1.forEach((val) => (val[1] = val[1] * 2));
+const users2 = users1.map(([key, value]) => [key, value * 2]);
 
-console.log(users1);
+console.log(users2);
 
 // Exercise 4 : Person Class
 // Instructions
