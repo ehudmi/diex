@@ -1,0 +1,12 @@
+form {
+  display: grid;
+  width: 20vw;
+  height: auto;
+  position: fixed;
+  top: 20vh;
+  left: 20vw;
+}
+
+button {
+  margin-top: 2rem;
+}
