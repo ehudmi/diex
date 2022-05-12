@@ -1,27 +1,13 @@
-// Exercise 1 : Merge Words
+// Daily Challenge : HTML Form
+
 // Instructions
-// Create a function such as mergeWords('Hello')() that returns the following string: 'Hello'
-// When the function is called without any arguments return a string where all words have been merged into a sentence.
+// Create a form with two fields (name, last name) and a submit button.
+// When you click the Send button, send the data as JSON.
+// The output should be:JSON.stringify(myForm)
+// output
 
-// For example
-// mergeWords('There')('is')('no')('spoon.')();
-// should return 'There is no spoon.'
-// Below is a verbose JavaScript solution, turn this into a currying function.
-
-function mergeWords(string) {
-  return function (nextString) {
-    if (nextString === undefined) {
-      return string;
-    } else {
-      return mergeWords(string + " " + nextString);
-    }
-  };
-}
-
-console.log(mergeWords("There")("is")("no")("spoon.")());
-
-const mergeWords1 = (string) => (nextString) => {
-  return string + " " + nextString;
-};
-
-console.log(mergeWords1("There")("is")("no")("spoon.")());
+const myForm = document.forms[0];
+myForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  console.log(JSON.stringify(myForm));
+});

@@ -63,3 +63,24 @@ for (h = 0; h < 24; h++) {
     canvasItem.className = "canvas-item";
   }
 }
+
+let currentColor = "";
+document.querySelectorAll(".palette-item").forEach((item) =>
+  item.addEventListener("click", () => {
+    currentColor = item.getAttribute("style");
+  })
+);
+
+document.querySelectorAll(".canvas-item").forEach((item) => {
+  item.addEventListener("mouseover", function (e) {
+    if (e.buttons == 1 || e.buttons == 3) {
+      item.setAttribute("style", currentColor);
+    }
+  });
+});
+
+document.querySelector("button").addEventListener("click", () =>
+  document.querySelectorAll(".canvas-item").forEach((item) => {
+    item.setAttribute("style", "background-color: rgb(255, 255, 255)");
+  })
+);
