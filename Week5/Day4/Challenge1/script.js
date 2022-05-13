@@ -31,3 +31,79 @@
 // BONUS II (not mandatory):
 // Create a function named deleteTask(), that as soon as the user clicks on the “X” button,
 // delete that specific task from the array listTasks.
+
+let listTasks = [];
+
+class Task {
+  constructor(task_id, text, done) {
+    this.task_id = Number(task_id);
+    this.text = String(text);
+    this.done = Boolean(done);
+  }
+}
+
+const addTask = () => {
+  document.querySelector("button").addEventListener("click", (e) => {
+    e.preventDefault();
+    if (document.querySelector("#task").value != "") {
+      let newTask = new Task(
+        listTasks.length,
+        document.querySelector("#task").value,
+        false
+      );
+      listTasks.push(newTask);
+      let newListItem = document.createElement("input");
+      newListItem.type = "checkbox";
+      newListItem.classList.add("task");
+      newListItem.setAttribute("data-task-id", newTask.task_id);
+      let newListItemLabel = document.createElement("label");
+      newListItemLabel.htmlFor = newListItem;
+      let newItemText = document.createTextNode(newTask.text);
+      let newIcon = document.createElement("i");
+      newIcon.classList.add("fa-solid", "fa-square-xmark");
+      newIcon.style.color = "red";
+      newIcon.id = newTask.task_id;
+      document.querySelector(".listTasks").appendChild(newIcon);
+      document.querySelector(".listTasks").appendChild(newListItem);
+      document.querySelector(".listTasks").appendChild(newListItemLabel);
+      newListItemLabel.appendChild(newItemText);
+      newListItem.addEventListener("change", doneTask);
+      newIcon.addEventListener("click", deleteTask);
+    }
+  });
+};
+
+const doneTask = (e) => {
+  if (e.target.checked == true) {
+    let index = e.target.attributes[2].value;
+    listTasks[index].done = true;
+    e.target.nextSibling.style.color = "red";
+    e.target.nextSibling.style.textDecoration = "line-through";
+    console.log(e);
+  } else {
+    let index = e.target.attributes[2].value;
+    listTasks[index].done = false;
+    e.target.nextSibling.style.color = "black";
+    e.target.nextSibling.style.textDecoration = "none";
+  }
+};
+
+const deleteTask = (e) => {
+  listTasks.splice(e.target.id, 1);
+  listTasks.forEach((index) => {
+    // listTasks[index].task_id = index;
+    console.log(listTasks[index]);
+  });
+  //   for (i = 0; i < 2; i++) {
+  //     e.target.nextSibling.remove();
+  //   }
+  //   while (!!e.target.nextElementSibling) {
+  //     e.target.nextElementSibling.remove();
+  //   }
+  //   e.target.remove();
+
+  console.log(listTasks);
+};
+
+addTask();
+console.log(listTasks);
