@@ -1,3 +1,36 @@
-div {
+* {
+  box-sizing: border-box;
+}
+
+h1 {
+  color: white;
+  text-align: center;
+}
+.toDoList {
+  position: absolute;
+  background: linear-gradient(180deg, rgb(241, 75, 75), pink);
+  margin: 0 auto;
+  width: 40vw;
+  height: fit-content;
+  top: 15vh;
+  left: 20vw;
+  font-size: larger;
+}
+
+form {
+  text-align: center;
+  margin: auto;
+}
+.listTasks {
   display: grid;
+  grid-template-columns: 1fr 1fr 20fr;
+  padding-left: 30%;
+  padding-right: 20%;
+  font-size: larger;
+  width: fit-content;
+}
+
+.task {
+  width: 20px;
+  height: 20px;
 }

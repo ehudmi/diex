@@ -33,6 +33,7 @@
 // delete that specific task from the array listTasks.
 
 let listTasks = [];
+let lastTaskId = 0;
 
 class Task {
   constructor(task_id, text, done) {
@@ -47,7 +48,7 @@ const addTask = () => {
     e.preventDefault();
     if (document.querySelector("#task").value != "") {
       let newTask = new Task(
-        listTasks.length,
+        lastTaskId,
         document.querySelector("#task").value,
         false
       );
@@ -55,9 +56,11 @@ const addTask = () => {
       let newListItem = document.createElement("input");
       newListItem.type = "checkbox";
       newListItem.classList.add("task");
+      newListItem.id = newTask.task_id;
       newListItem.setAttribute("data-task-id", newTask.task_id);
       let newListItemLabel = document.createElement("label");
-      newListItemLabel.htmlFor = newListItem;
+      newListItemLabel.htmlFor = newListItem.id;
+      newListItemLabel.classList.add("taskLabel");
       let newItemText = document.createTextNode(newTask.text);
       let newIcon = document.createElement("i");
       newIcon.classList.add("fa-solid", "fa-square-xmark");
@@ -69,6 +72,8 @@ const addTask = () => {
       newListItemLabel.appendChild(newItemText);
       newListItem.addEventListener("change", doneTask);
       newIcon.addEventListener("click", deleteTask);
+      lastTaskId++;
+      document.querySelector("#task").value = "";
     }
   });
 };
@@ -90,18 +95,10 @@ const doneTask = (e) => {
 
 const deleteTask = (e) => {
   listTasks.splice(e.target.id, 1);
-  listTasks.forEach((index) => {
-    // listTasks[index].task_id = index;
-    console.log(listTasks[index]);
-  });
-  //   for (i = 0; i < 2; i++) {
-  //     e.target.nextSibling.remove();
-  //   }
-  //   while (!!e.target.nextElementSibling) {
-  //     e.target.nextElementSibling.remove();
-  //   }
-  //   e.target.remove();
-
+  for (i = 0; i < 2; i++) {
+    e.target.nextSibling.remove();
+  }
+  e.target.remove();
   console.log(listTasks);
 };
 
