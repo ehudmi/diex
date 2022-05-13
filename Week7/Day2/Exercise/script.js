@@ -71,6 +71,8 @@ console.log(fullResident);
 const lastNames = users
   .filter((val, index) =>
     users[index].role == "Full Stack Resident" ? users[index] : null
+    //-is the ternarry condition mandatory in your case ?? if user.role !== than fullstack what will be the return of the callback (without the ternary )
+    // and and what is the behaviour of a filter callback with such a return ?
   )
   .map((val, index) => users[index].lastName);
 
