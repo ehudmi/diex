@@ -80,14 +80,15 @@ const addTask = () => {
 
 const doneTask = (e) => {
   if (e.target.checked == true) {
-    let index = e.target.attributes[2].value;
-    listTasks[index].done = true;
+    let index = Number(e.target.attributes[2].value);
+    let currentTask = listTasks.findIndex((o) => o.task_id === index);
+    listTasks[currentTask].done = true;
     e.target.nextSibling.style.color = "red";
     e.target.nextSibling.style.textDecoration = "line-through";
-    console.log(e);
   } else {
-    let index = e.target.attributes[2].value;
-    listTasks[index].done = false;
+    let index = Number(e.target.attributes[2].value);
+    let currentTask = listTasks.findIndex((o) => o.task_id === index);
+    listTasks[currentTask].done = false;
     e.target.nextSibling.style.color = "black";
     e.target.nextSibling.style.textDecoration = "none";
   }
@@ -99,8 +100,6 @@ const deleteTask = (e) => {
     e.target.nextSibling.remove();
   }
   e.target.remove();
-  console.log(listTasks);
 };
 
 addTask();
-console.log(listTasks);
