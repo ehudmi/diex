@@ -128,7 +128,6 @@ for (i in robots) {
     robots[i].image
   );
   roboFriendsCards[i].createCard();
-  console.log(robots[i]);
 }
 
 // filter the cards and make sure the characters used are valid and show only what is filtered
@@ -142,7 +141,7 @@ const checkCharacters = (e) => {
   if (keyCode == 8) {
     searchString = searchString.slice(0, searchString.length - 1);
   } else if (keyCode == 46) {
-    searchString = e.target.value;
+    searchString = "";
   } else
     searchString = searchString + String.fromCharCode(keyCode).toLowerCase();
 
