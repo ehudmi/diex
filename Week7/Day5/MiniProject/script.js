@@ -1,4 +1,5 @@
 // Robo-Friends
+
 const robots = [
   {
     id: 1,
@@ -71,3 +72,85 @@ const robots = [
     image: "https://robohash.org/10?200x200",
   },
 ];
+
+// Create a roboCards Class that will hold all the data so we don't modify the original data
+// also it will hold the method for creating the cards
+
+class roboCards {
+  constructor(id, name, username, email, image) {
+    this.id = id;
+    this.name = name;
+    this.username = username;
+    this.email = email;
+    this.image = image;
+  }
+  createCard = () => {
+    this.colDiv = document.createElement("div");
+    let cardDiv = document.createElement("div");
+    let roboImg = document.createElement("img");
+    let cardBodyDiv = document.createElement("div");
+    let cardTitle = document.createElement("h5");
+    let cardText = document.createElement("p");
+    let container = document.querySelector("#robo-container");
+    container.appendChild(this.colDiv);
+    this.colDiv.classList.add("col");
+    this.colDiv.appendChild(cardDiv);
+    cardDiv.classList.add("card");
+    cardDiv.appendChild(roboImg);
+    roboImg.classList.add("card-img");
+    roboImg.src = this.image;
+    cardDiv.appendChild(cardBodyDiv);
+    cardBodyDiv.classList.add("card-body");
+    cardBodyDiv.appendChild(cardTitle);
+    cardTitle.appendChild(document.createTextNode(this.name));
+    cardTitle.classList.add("card-title");
+    cardBodyDiv.appendChild(cardText);
+    cardBodyDiv.appendChild(document.createTextNode(this.email));
+    cardText.classList.add("card-text");
+  };
+  hideCard = () => {
+    this.colDiv.classList.add("d-none");
+  };
+  showCard = () => {
+    this.colDiv.classList.remove("d-none");
+  };
+}
+
+// create an array for the instances of the roboCards
+
+let roboFriendsCards = [];
+for (i in robots) {
+  roboFriendsCards[i] = new roboCards(
+    robots[i].id,
+    robots[i].name,
+    robots[i].username,
+    robots[i].email,
+    robots[i].image
+  );
+  roboFriendsCards[i].createCard();
+  console.log(robots[i]);
+}
+
+// filter the cards and make sure the characters used are valid and show only what is filtered
+// while hiding the rest
+
+let searchString = "";
+
+const checkCharacters = (e) => {
+  let keyCode = e.keyCode || e.which;
+
+  if (keyCode == 8) {
+    searchString = searchString.slice(0, searchString.length - 1);
+  } else if (keyCode == 46) {
+    searchString = e.target.value;
+  } else
+    searchString = searchString + String.fromCharCode(keyCode).toLowerCase();
+
+  roboFriendsCards.forEach((elem) => {
+    if (elem.name.toLowerCase().includes(searchString)) {
+      elem.showCard();
+    } else elem.hideCard();
+  });
+};
+
+document.querySelector("#search").addEventListener("keydown", checkCharacters);

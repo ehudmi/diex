@@ -1,4 +1,6 @@
 #robo-container {
+  /* height: 80vh;
+  width: 80vw; */
   background: purple url("./assets/circuit-pattern.png") repeat;
 }
 
@@ -8,4 +10,9 @@ nav {
 
 .card {
   background: aqua url("./assets/card-pattern.png") repeat;
+  /* border-radius: 50%; */
+}
+
+img {
+  border-radius: 50%;
 }
