@@ -114,6 +114,7 @@ class roboCards {
   showCard = () => {
     this.colDiv.classList.remove("d-none");
   };
+  letterInArray = (array) => array.every(char => this.name.includes(char))
 }
 
 // create an array for the instances of the roboCards
@@ -144,12 +145,18 @@ const checkCharacters = (e) => {
     searchString = "";
   } else
     searchString = searchString + String.fromCharCode(keyCode).toLowerCase();
+  let searchStrAsArr = searchString.split("").filter(e => e != " ")
+  roboFriendsCards.forEach(robot => {
+    robot.letterInArray(searchStrAsArr)
+      ? robot.showCard()
+      : robot.hideCard();
 
-  roboFriendsCards.forEach((elem) => {
-    if (elem.name.toLowerCase().includes(searchString)) {
-      elem.showCard();
-    } else elem.hideCard();
-  });
+  })
+  // roboFriendsCards.forEach((elem) => {
+  //   if (elem.name.toLowerCase().includes(searchString)) {
+  //     elem.showCard();
+  //   } else elem.showCard();
+  // });
 };
 
 document.querySelector("#search").addEventListener("keydown", checkCharacters);
