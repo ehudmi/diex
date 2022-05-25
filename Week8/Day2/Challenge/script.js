@@ -9,5 +9,6 @@
 const myForm = document.forms[0];
 myForm.addEventListener("submit", (e) => {
   e.preventDefault();
-  console.log(JSON.stringify(myForm));
+  const formData = new FormData(e.target);
+  console.log(JSON.stringify(Object.fromEntries(formData)));
 });
