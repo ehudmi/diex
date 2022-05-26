@@ -119,19 +119,12 @@ const toJs = () => {
   });
 };
 
-let input = "hello";
-
-// prompt("please input a word")
-
 const toMorse = (morseJS) => {
-  // let word = input.split("");
-  // let morseTranslationArray = [];
   return new Promise((resolve, reject) => {
-    let word = input.split("");
+    let word = prompt("please input a word").split("");
     let morseTranslationArray = [];
     word.forEach((value) => {
       if (morseJS.hasOwnProperty(value)) {
-        // console.log(morseJS[value]);
         morseTranslationArray.push(morseJS[value]);
       } else
         reject(
