@@ -1,58 +1,27 @@
-// Daily Challenge: Dates
+// Exercise 1 : Star Wars API
 // Instructions
-// Create a function that takes a date object and return string in the following format: YYYYMMDDHHmmSS.
+// Part I
 
-// The format should contain a 4 digit year, 2 digit month, 2 digit day, 2 digit hour(00-23), 2 digit minute and 2 digit second.
-// If any of the value has only single digit, you must use zero prefix, so that the result string length is always the same.
+// Using this code:
 
-// Examples
+const urls = [
+  "https://www.swapi.tech/api/people/1",
+  "https://www.swapi.tech/api/people/2",
+  "https://www.swapi.tech/api/people/3",
+  "https://www.swapi.tech/api/people/4",
+];
 
-// formatDate(new Date(2020, 6, 4, 8, 0, 0)) ➞ "20200704080000"
+Promise.all(urls.map((elem) => fetch(elem)))
+  .then((responses) =>
+    responses.forEach((response) =>
+      console.log(`${response.url}: ${response.status}`)
+    )
+  )
+  .catch((error) => console.log("Star Wars went Kabooee", error));
 
-// formatDate(new Date(2019, 11, 31, 23, 59, 59)) ➞ "20191231235959"
+// Use Promise.all to fetch all the characters from the array above with only one request.
+// Console.log the output and make sure it has a catch block as well.
 
-// formatDate(new Date(2020, 6, 4)) ➞ "20200704000000"
+// Part II
 
-// Notes
-// Assume Date year input will always be greater than 1970.
-
-// Try not to rely on the default Date.toString() output in your implementation.
-
-// Be aware that the Date's month field is zero based (0 is January and 11 is December).
-
-const formatDate = (dateelem) => {
-  let theYear = dateelem.getFullYear();
-  let theMonth = "";
-  let theDay = "";
-  let theHour = "";
-  let theMinute = "";
-  let theSecond = "";
-
-  dateelem.getMonth() < 10
-    ? (theMonth = "0" + (dateelem.getMonth() + 1))
-    : (theMonth = dateelem.getMonth() + 1);
-
-  dateelem.getDate() < 10
-    ? (theDay = "0" + dateelem.getDate())
-    : (theDay = dateelem.getDate() + 1);
-
-  dateelem.getHours() < 10
-    ? (theHour = "0" + dateelem.getHours())
-    : (theHour = dateelem.getHours());
-
-  dateelem.getMinutes() < 10
-    ? (theMinute = "0" + dateelem.getMinutes())
-    : (theMinute = dateelem.getMinutes());
-
-  dateelem.getSeconds() < 10
-    ? (theSecond = "0" + dateelem.getSeconds())
-    : (theSecond = dateelem.getSeconds());
-
-  console.log(
-    `${theYear}${theMonth}${theDay}${theHour}${theMinute}${theSecond}`
-  );
-};
-
-formatDate(new Date(2020, 6, 4, 8, 0, 0));
-formatDate(new Date(2019, 11, 31, 23, 59, 59));
-formatDate(new Date(2020, 6, 4));
+// Change one of the urls in the array provided above. This should cause an error. Make sure your catch block works.

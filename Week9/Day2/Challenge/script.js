@@ -1,58 +1,155 @@
-// Daily Challenge: Dates
 // Instructions
-// Create a function that takes a date object and return string in the following format: YYYYMMDDHHmmSS.
+// 1rst Daily Challenge
+// Create two functions. Each function should return a promise.
+// The first function called makeAllCaps(), takes an array of words as an argument
+// If all the words in the array are strings, resolve the promise. The value of the resolved promise is the array of words uppercased.
+// else, reject the promise with a reason.
+// The second function called sortWords(), takes an array of words uppercased as an argument
+// If the array length is bigger than 4, resolve the promise.
+// The value of the resolved promise is the array of words sorted in alphabetical order.
+// else, reject the promise with a reason.
 
-// The format should contain a 4 digit year, 2 digit month, 2 digit day, 2 digit hour(00-23), 2 digit minute and 2 digit second.
-// If any of the value has only single digit, you must use zero prefix, so that the result string length is always the same.
-
-// Examples
-
-// formatDate(new Date(2020, 6, 4, 8, 0, 0)) ➞ "20200704080000"
-
-// formatDate(new Date(2019, 11, 31, 23, 59, 59)) ➞ "20191231235959"
-
-// formatDate(new Date(2020, 6, 4)) ➞ "20200704000000"
-
-// Notes
-// Assume Date year input will always be greater than 1970.
-
-// Try not to rely on the default Date.toString() output in your implementation.
-
-// Be aware that the Date's month field is zero based (0 is January and 11 is December).
-
-const formatDate = (dateelem) => {
-  let theYear = dateelem.getFullYear();
-  let theMonth = "";
-  let theDay = "";
-  let theHour = "";
-  let theMinute = "";
-  let theSecond = "";
-
-  dateelem.getMonth() < 10
-    ? (theMonth = "0" + (dateelem.getMonth() + 1))
-    : (theMonth = dateelem.getMonth() + 1);
-
-  dateelem.getDate() < 10
-    ? (theDay = "0" + dateelem.getDate())
-    : (theDay = dateelem.getDate() + 1);
-
-  dateelem.getHours() < 10
-    ? (theHour = "0" + dateelem.getHours())
-    : (theHour = dateelem.getHours());
-
-  dateelem.getMinutes() < 10
-    ? (theMinute = "0" + dateelem.getMinutes())
-    : (theMinute = dateelem.getMinutes());
-
-  dateelem.getSeconds() < 10
-    ? (theSecond = "0" + dateelem.getSeconds())
-    : (theSecond = dateelem.getSeconds());
-
-  console.log(
-    `${theYear}${theMonth}${theDay}${theHour}${theMinute}${theSecond}`
-  );
+const makeAllCaps = (wordArray) => {
+  return new Promise((resolve, reject) => {
+    if (wordArray.every((value) => typeof value == "string" && value != "")) {
+      resolve(wordArray.map((value) => value.toUpperCase()));
+    }
+    reject("the array is not all words");
+  });
 };
 
-formatDate(new Date(2020, 6, 4, 8, 0, 0));
-formatDate(new Date(2019, 11, 31, 23, 59, 59));
-formatDate(new Date(2020, 6, 4));
+const sortWords = (wordArray) => {
+  return new Promise((resolve, reject) => {
+    if (wordArray.length > 4) {
+      resolve(wordArray.sort());
+    }
+    reject("the array is longer than 4");
+  });
+};
+
+makeAllCaps([1, "pear", "banana"])
+  .then((arr) => sortWords(arr))
+  .then((result) => console.log(result))
+  .catch((error) => console.log(error));
+
+makeAllCaps(["apple", "pear", "banana"])
+  .then((arr) => sortWords(arr))
+  .then((result) => console.log(result))
+  .catch((error) => console.log(error));
+
+makeAllCaps(["apple", "pear", "banana", "melon", "kiwi"])
+  .then((arr) => sortWords(arr))
+  .then((result) => console.log(result)) //["APPLE","BANANA", "KIWI", "MELON", "PEAR"]
+  .catch((error) => console.log(error));
+
+// 2nd Daily Challenge
+let morse = `{
+  "0": "-----",
+  "1": ".----",
+  "2": "..---",
+  "3": "...--",
+  "4": "....-",
+  "5": ".....",
+  "6": "-....",
+  "7": "--...",
+  "8": "---..",
+  "9": "----.",
+  "a": ".-",
+  "b": "-...",
+  "c": "-.-.",
+  "d": "-..",
+  "e": ".",
+  "f": "..-.",
+  "g": "--.",
+  "h": "....",
+  "i": "..",
+  "j": ".---",
+  "k": "-.-",
+  "l": ".-..",
+  "m": "--",
+  "n": "-.",
+  "o": "---",
+  "p": ".--.",
+  "q": "--.-",
+  "r": ".-.",
+  "s": "...",
+  "t": "-",
+  "u": "..-",
+  "v": "...-",
+  "w": ".--",
+  "x": "-..-",
+  "y": "-.--",
+  "z": "--..",
+  ".": ".-.-.-",
+  ",": "--..--",
+  "?": "..--..",
+  "!": "-.-.--",
+  "-": "-....-",
+  "/": "-..-.",
+  "@": ".--.-.",
+  "(": "-.--.",
+  ")": "-.--.-"
+}`;
+
+// Create three functions. The two first functions should return a promise..
+
+// The first function is named toJs():
+// this function converts the morse json string provided above to a morse javascript object.
+// if the morse javascript object is empty, throw an error (use reject)
+// else return the morse javascript object (use resolve)
+// The second function called toMorse(morseJS), takes one argument: the new morse javascript object.
+// This function asks the user for a word or a sentence.
+// if the user entered a character that doesn’t exist in the new morse javascript object, throw an error. (use reject)
+// else return an array with the morse translation of the user’s word.
+// if the user enters the word "Hello", the promise resolves with this value ["....", ".", ".-..", ".-..","---"]
+// if the user entered the word "¡Hola!", the promise rejects because the character "¡" doesn't exist in the morse javascript object
+
+// The third function called joinWords(morseTranslation), takes one argument: the morse translation array
+
+// this function joins the morse translation by using line break and display it on the page (ie. On the DOM)
+
+// Chain the three functions.
+
+const toJs = () => {
+  return new Promise((resolve, reject) => {
+    if (JSON.parse(morse) == "") {
+      reject("this is an empty object");
+    }
+    resolve(JSON.parse(morse));
+  });
+};
+
+let input = "hello";
+
+// prompt("please input a word")
+
+const toMorse = (morseJS) => {
+  // let word = input.split("");
+  // let morseTranslationArray = [];
+  return new Promise((resolve, reject) => {
+    let word = input.split("");
+    let morseTranslationArray = [];
+    word.forEach((value) => {
+      if (morseJS.hasOwnProperty(value)) {
+        // console.log(morseJS[value]);
+        morseTranslationArray.push(morseJS[value]);
+      } else
+        reject(
+          `The character ${value} doesn't exist in the morse javascript object`
+        );
+    });
+    console.log(morseTranslationArray);
+    resolve(morseTranslationArray);
+  });
+};
+
+const joinWords = (morseTranslation) => {
+  document.open();
+  document.write(morseTranslation.join("<br>"));
+  document.close();
+};
+
+toJs()
+  .then(toMorse)
+  .then(joinWords)
+  .catch((error) => console.log(error));
