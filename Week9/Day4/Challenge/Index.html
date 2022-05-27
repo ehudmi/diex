@@ -12,9 +12,16 @@
   </head>
   <body>
     <form method="get" action="Index.html">
-      <input type="text" name="search" id="search" />
-      <input type="button" id="find" value="Find" />
+      <label for="first_city_lat">First Site Latitude</label>
+      <input type="text" name="first_city_lat" id="first_city_lat" />
+      <label for="first_city_long">First Site Longitude</label>
+      <input type="text" name="first_city_long" id="first_city_long" />
+      <label for="second_city_lat">Second Site Latitude</label>
+      <input type="text" name="second_city_lat" id="second_city_lat" />
+      <label for="second_city_long">Second Site Longitude</label>
+      <input type="text" name="second_city_long" id="second_city_long" />
+      <input type="submit" id="find" value="Find" />
     </form>
-    <div class="img-container"></div>
+    <div class="sunrise-data"></div>
   </body>
 </html>
