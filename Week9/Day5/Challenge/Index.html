@@ -19,16 +19,19 @@
     <title>Exercise</title>
   </head>
   <body>
-    <form method="get" action="Index.html">
-      <label for="firstCurrency">First Currency</label>
-      <select name="firstCurrency" id="firstCurrency"></select>
-      <label for="secondCurrency">Second Currency</label>
-      <select name="secondCurrency" id="secondCurrency"></select>
-      <label for="amount">Amount</label>
-      <input type="text" name="amount" id="amount" />
-      <input type="submit" id="convert" value="Convert" />
-      <input type="submit" id="reverseConvert" value="Reverse" />
-    </form>
+    <div class="container">
+      <form method="get" action="Index.html">
+        <label for="firstCurrency">First Currency</label>
+        <select name="firstCurrency" id="firstCurrency"></select>
+        <label for="secondCurrency">Second Currency</label>
+        <select name="secondCurrency" id="secondCurrency"></select>
+        <label for="amount">Amount</label>
+        <input type="text" name="amount" id="amount" />
+        <input type="submit" id="convert" value="Convert" />
+        <input type="submit" id="reverseConvert" value="Reverse" />
+      </form>
+    </div>
+
     <div class="conversion-result"></div>
   </body>
 </html>

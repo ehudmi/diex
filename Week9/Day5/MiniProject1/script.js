@@ -1,27 +1,59 @@
-// Exercise 1 : Star Wars API
+// Star Wars Web App Using AJAX API
+// What You Will Create
+// Star Wars Web App Using AJAX API
+// In this project you will have to build a single page application that uses AJAX to retrieve information
+// and display it on your website as follows:
 // Instructions
-// Part I
 
-// Using this code:
+// You should use this API: https://www.swapi.tech/ to get the data and update it “randomly” in your website by clicking a button.
+// Note: The API contains 83 different characters
 
-const urls = [
-  "https://www.swapi.tech/api/people/1",
-  "https://www.swapi.tech/api/people/2",
-  "https://www.swapi.tech/api/people/3",
-  "https://www.swapi.tech/api/people/4",
-];
+// 1. Create your HTML file, and add the relevant elements.
 
-Promise.all(urls.map((elem) => fetch(elem)))
-  .then((responses) =>
-    responses.forEach((response) =>
-      console.log(`${response.url}: ${response.status}`)
-    )
-  )
-  .catch((error) => console.log("Star Wars went Kabooee", error));
+// 2. In your JS file, create your functions :
+//    to retrieve the elements from the DOM.
+//    to get the data from the API (star wars characters).
+//    to display the info on the DOM: the name, height, gender, birth year, and home world of the character.
 
-// Use Promise.all to fetch all the characters from the array above with only one request.
-// Console.log the output and make sure it has a catch block as well.
+// 3. Display the data using AJAX. Make sure to display a loading message as follows:
+//    You can use any of these animation icons for the loading message.
 
-// Part II
+// 4. If there is an error getting the data, display a message as follows:
 
-// Change one of the urls in the array provided above. This should cause an error. Make sure your catch block works.
+// 5. You can use your own css to style the website as you see fit
+
+// https://www.swapi.tech/api/people/1
+
+const apiUrl = "https://www.swapi.tech/api/people";
+
+const getCharacter = async () => {
+  let charNumber = Math.floor(Math.random() * 83);
+  let fetchURL = `${apiUrl}/${charNumber}`;
+  console.log(fetchURL);
+  let res = await fetch(fetchURL);
+  let resJson = await res.json();
+  console.log(resJson);
+  let charName = resJson.result.properties.name;
+  let charHeight = resJson.result.properties.height;
+  let charGender = resJson.result.properties.gender;
+  let charBirth = resJson.result.properties.birth_year;
+  let charHomeUrl = resJson.result.properties.homeworld;
+  let charHome = "";
+  let planetRes = await fetch(charHomeUrl);
+  let planetResJson = await planetRes.json();
+  console.log(planetResJson);
+  charHome = planetResJson.result.properties.name;
+  console.log(
+    `${charName} , ${charHeight} , ${charGender} , ${charBirth} , ${charHome}`
+  );
+  //   let conversionResult = document.createTextNode(
+  //     `${resJson.conversion_result}`
+  //   );
+  //   document.querySelector("div").appendChild(conversionResult);
+  //   document
+  //     .querySelector("div")
+  //     .appendChild(document.createTextNode(`${convertObject.targetCurrency}`));
+  return resJson;
+};
+
+document.querySelector("#search").addEventListener("click", getCharacter);

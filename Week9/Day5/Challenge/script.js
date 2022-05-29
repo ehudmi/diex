@@ -27,7 +27,7 @@
 // Setting up the global variables
 
 const myForm = document.forms[0];
-const apiKey = "4b15e8d0eb3326f5e043117c";
+const apiKey = "67e4f60b8aba910b5fb47978";
 const apiUrl = "https://v6.exchangerate-api.com/v6/";
 
 const convertObject = {
