@@ -46,13 +46,11 @@ const getCharacter = async () => {
   console.log(
     `${charName} , ${charHeight} , ${charGender} , ${charBirth} , ${charHome}`
   );
-  //   let conversionResult = document.createTextNode(
-  //     `${resJson.conversion_result}`
-  //   );
-  //   document.querySelector("div").appendChild(conversionResult);
-  //   document
-  //     .querySelector("div")
-  //     .appendChild(document.createTextNode(`${convertObject.targetCurrency}`));
+  document.querySelector("#name").value = charName;
+  document.querySelector("#height").value = charHeight;
+  document.querySelector("#gender").value = charGender;
+  document.querySelector("#birth").value = charBirth;
+  document.querySelector("#homeworld").value = charHome;
   return resJson;
 };
 

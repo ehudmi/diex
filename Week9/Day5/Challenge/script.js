@@ -63,9 +63,9 @@ const getConversion = async () => {
   let conversionResult = document.createTextNode(
     `${resJson.conversion_result}`
   );
-  document.querySelector("div").appendChild(conversionResult);
+  document.querySelector("#conversion").appendChild(conversionResult);
   document
-    .querySelector("div")
+    .querySelector("#conversion")
     .appendChild(document.createTextNode(`${convertObject.targetCurrency}`));
   return resJson;
 };
@@ -73,10 +73,10 @@ const getConversion = async () => {
 // function for switching between the currency pair
 
 const reverseConversion = () => {
-  while (document.querySelector("div").firstChild) {
+  while (document.querySelector("#conversion").firstChild) {
     document
-      .querySelector("div")
-      .removeChild(document.querySelector("div").firstChild);
+      .querySelector("#conversion")
+      .removeChild(document.querySelector("#conversion").firstChild);
   }
   convertObject.sourceCurrency =
     document.querySelector("#secondCurrency").value;
