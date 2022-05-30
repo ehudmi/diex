@@ -25,11 +25,16 @@
     <div class="container">
       <h1>Simple Weather App</h1>
       <form action="./index.html" method="get">
-        <input type="text" name="city" id="city" />
+        <input
+          type="text"
+          name="city"
+          id="city"
+          placeholder="Search for a city"
+        />
         <input type="button" value="Find" id="find" />
       </form>
       <div class="row row-cols-1 row-cols-md-3 g-4">
-        <div class="col">
+        <!-- <div class="col">
           <div class="card h-100">
             <div class="card-body">
               <h5 class="card-title">City, Country</h5>
@@ -48,20 +53,28 @@
             </div>
             <div class="card-footer"></div>
           </div>
-        </div>
+        </div> -->
       </div>
-    </div>
-    <div class="form-check form-switch">
-      <div class="footerContainer">
-        <span>°C</span>
+      <div class="btn-switch">
         <input
-          class="form-check-input"
-          type="checkbox"
-          role="switch"
-          id="flexSwitchCheckDefault"
-          style="float: none"
+          type="radio"
+          id="yes"
+          name="switch"
+          class="btn-switch__radio btn-switch__radio_yes"
         />
-        <span>°F</span>
+        <input
+          type="radio"
+          checked
+          id="no"
+          name="switch"
+          class="btn-switch__radio btn-switch__radio_no"
+        />
+        <label for="yes" class="btn-switch__label btn-switch__label_yes"
+          ><div class="btn-switch__txt">°C</div></label
+        >
+        <label for="no" class="btn-switch__label btn-switch__label_no"
+          ><div class="btn-switch__txt">°F</div></label
+        >
       </div>
     </div>
     <div id="error_modal" class="modal" tabindex="-1">
