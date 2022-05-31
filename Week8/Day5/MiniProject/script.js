@@ -75,8 +75,27 @@ const getLocation = () => {
         if (firstXhr.status != 200) {
           alert(`Error ${firstXhr.status}: ${firstXhr.statusText}`);
         } else {
-          // let localWeatherIcon = `${iconURL}${xhr.response.weather[0].icon}@2x.png`;
-          // let localWeather = xhr.response.weather[0].description;
+          let currentLocation = document.createElement("h4");
+          let currentLocationText = document.createTextNode(
+            `Current position: Latitude - ${position.coords.latitude} ; Longitude - ${position.coords.longitude}`
+          );
+          document
+            .querySelector("#current-location")
+            .appendChild(currentLocation);
+          currentLocation.appendChild(currentLocationText);
+          let currentWeather = document.createElement("h4");
+          let currentWeatherText = document.createTextNode(
+            `Your local weather is ${firstXhr.response.weather[0].description}`
+          );
+          document
+            .querySelector("#current-location")
+            .appendChild(currentWeather);
+          currentWeather.appendChild(currentWeatherText);
+          let currentWeatherIcon = document.createElement("img");
+          currentWeatherIcon.src = `${iconURL}${firstXhr.response.weather[0].icon}@2x.png`;
+          document
+            .querySelector("#current-location")
+            .appendChild(currentWeatherIcon);
           console.log(firstXhr.response);
         }
       };
@@ -99,7 +118,25 @@ const convertUnixTime = (unix_timestamp) => {
   return formattedTime;
 };
 
-// document.onload(getLocation());
+const convertTemp = () => {
+  if (document.querySelector("#no").checked) {
+    document.querySelectorAll(".card-temp").forEach(
+      // (element) => element.innerHTML == (element.innerHTML * 9) / 5 + 32
+      (element) => {
+        if (element.innerHTML.includes("F"))
+          element.innerHTML == (element.innerHTML * 9) / 5 + 32;
+      }
+    );
+  } else if (document.querySelector("#yes").checked) {
+    document.querySelectorAll(".card-temp").forEach(
+      // (element) => element.innerHTML == ((element.innerHTML - 32) * 5) / 9
+      (element) => {
+        if (element.innerHTML.includes("C"))
+          element.innerHTML == ((element.innerHTML - 32) * 5) / 9;
+      }
+    );
+  }
+};
 
 myForm.querySelector("#find").addEventListener("click", (e) => {
   let xhr = new XMLHttpRequest();
@@ -107,21 +144,18 @@ myForm.querySelector("#find").addEventListener("click", (e) => {
   // Configure my request
 
   let city = myForm.querySelector("#city").value;
-  // const apiKey = "6bc236fa8bd5e7e03f83fd8cea3eac74";
   const cityApiURL = `${apiURL}&q=${city}`;
-  // const iconURL = `http://openweathermap.org/img/wn/`;
 
   xhr.open("GET", cityApiURL);
-
   xhr.responseType = "json";
-
   xhr.send();
 
   xhr.onload = () => {
     if (xhr.status != 200) {
-      // alert(`Error ${xhr.status}: ${xhr.statusText}`); // e.g. 404: Not Found
-      let errorModal = document.querySelector("#error_modal");
-
+      let errorModal = new bootstrap.Modal(
+        document.querySelector("#error_modal")
+      );
+      errorModal.show();
       console.log(errorModal);
     } else {
       // Create and populate the dataObject with response data
@@ -178,15 +212,14 @@ myForm.querySelector("#find").addEventListener("click", (e) => {
       let imgIcon = document.createElement("img");
       imgIcon.src = dataObject.weather_icon;
       imgIcon.alt = dataObject.weather;
-      // imgIcon.classList.add("card-img-top");
       cardBodyDiv.appendChild(imgIcon);
       let otherItems = document.createElement("p");
       let otherItemsText = document.createTextNode(`
       weather: ${dataObject.weather}
-      humidity: ${dataObject.humidity}
+      humidity: ${dataObject.humidity} %
       wind - degree: ${dataObject.wind.deg} , gust - ${dataObject.wind.gust} , speed - ${dataObject.wind.speed}
       sunrise time: ${dataObject.sunrise}
-      sunrise time: ${dataObject.sunset}`);
+      sunset time: ${dataObject.sunset}`);
       cardBodyDiv.appendChild(otherItems);
       otherItems.appendChild(otherItemsText);
       let delBttn = document.createElement("button");
@@ -203,9 +236,7 @@ myForm.querySelector("#find").addEventListener("click", (e) => {
       });
     }
   };
-
-  // xhr.onerror = () => {
-  //   alert("Request failed");
-  //   console.log("FUBAR");
-  // };
 });
+
+document.querySelector("#no").addEventListener("click", (e) => console.log(e));
+document.querySelector("#yes").addEventListener("click", (e) => console.log(e));
