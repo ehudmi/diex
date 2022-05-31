@@ -100,32 +100,6 @@ myForm.querySelector("#find").addEventListener("click", (e) => {
       );
       errorModal.show();
     } else {
-      // Create and populate the dataObject with response data
-      const dataObject = {
-        city: "",
-        country: "",
-        weather: "",
-        humidity: "",
-        temperature_celsius: "",
-        temperature_fahrenheit: "",
-        weather_icon: "",
-        wind: { deg: "", gust: "", speed: "" },
-        sunrise: "",
-        sunset: "",
-      };
-      let weatherIcon = xhr.response.weather[0].icon;
-      dataObject.city = xhr.response.name;
-      dataObject.weather_icon = `${iconURL}${weatherIcon}@2x.png`;
-      dataObject.country = xhr.response.sys.country;
-      dataObject.weather = xhr.response.weather[0].description;
-      dataObject.humidity = xhr.response.main.humidity;
-      dataObject.temperature_celsius = xhr.response.main.temp;
-      dataObject.temperature_fahrenheit =
-        (dataObject.temperature_celsius * 9) / 5 + 32;
-      dataObject.wind = xhr.response.wind;
-      dataObject.sunrise = convertUnixTime(xhr.response.sys.sunrise);
-      dataObject.sunset = convertUnixTime(xhr.response.sys.sunset);
-
       // create the DOM elements after getting the response
 
       let containerDiv = document.querySelector(".row");
@@ -138,26 +112,28 @@ myForm.querySelector("#find").addEventListener("click", (e) => {
       let cardTitle = cardBodyDiv.appendChild(document.createElement("h5"));
       cardTitle.classList.add("card-title");
       let cardTitleText = document.createTextNode(
-        `${dataObject.city} , ${dataObject.country}`
+        `${xhr.response.name} , ${xhr.response.sys.country}`
       );
       cardTitle.appendChild(cardTitleText);
       let cardTemp = cardBodyDiv.appendChild(document.createElement("h2"));
       cardTemp.classList.add("card-temp");
       let cardTempText = document.createTextNode(
-        `${dataObject.temperature_celsius} , °C`
+        `${Number(xhr.response.main.temp).toFixed(2)} , °C`
       );
       cardTemp.appendChild(cardTempText);
       let imgIcon = document.createElement("img");
-      imgIcon.src = dataObject.weather_icon;
-      imgIcon.alt = dataObject.weather;
+      imgIcon.src = `${iconURL}${xhr.response.weather[0].icon}@2x.png`;
+      imgIcon.alt = xhr.response.weather[0].description;
       cardBodyDiv.appendChild(imgIcon);
       let otherItems = document.createElement("p");
       let otherItemsText = document.createTextNode(`
-      weather: ${dataObject.weather}
-      humidity: ${dataObject.humidity} %
-      wind - degree: ${dataObject.wind.deg} , gust - ${dataObject.wind.gust} , speed - ${dataObject.wind.speed}
-      sunrise time: ${dataObject.sunrise}
-      sunset time: ${dataObject.sunset}`);
+      weather: ${xhr.response.weather[0].description}
+      humidity: ${xhr.response.main.humidity} %
+      wind - degree: ${xhr.response.wind.deg} , gust - ${
+        xhr.response.wind.gust
+      } , speed - ${xhr.response.wind.speed}
+      sunrise time: ${convertUnixTime(xhr.response.sys.sunrise)}
+      sunset time: ${convertUnixTime(xhr.response.sys.sunset)}`);
       cardBodyDiv.appendChild(otherItems);
       otherItems.appendChild(otherItemsText);
       let delBttn = document.createElement("button");
