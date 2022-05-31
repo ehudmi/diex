@@ -1,0 +1,43 @@
+* {
+  display: block;
+}
+
+body {
+  background-color: black;
+  background-image: url("./assets/UG6XrK.jpg");
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+
+.char-container {
+  width: 500px;
+  height: 250px;
+  margin: 0 auto;
+  border: 2px solid black;
+  border-radius: 10px;
+  padding: 50px 60px;
+}
+
+.logo {
+  justify-content: center;
+}
+img {
+  margin: 80px auto;
+  width: 650px;
+  height: 300px;
+}
+
+button {
+  margin: 20px auto;
+  width: 150px;
+  height: 60px;
+  color: white;
+  font-size: 20px;
+  background-color: black;
+  border-radius: 10px;
+  border: 1px solid yellow;
+}
+
+input {
+  margin: 25px auto;
+}
