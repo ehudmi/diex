@@ -27,6 +27,8 @@
 const apiUrl = "https://www.swapi.tech/api/people";
 
 const getCharacter = async () => {
+  document.querySelector(".spinner-container").style.visibility = "visible";
+  // console.log(document.querySelector("i").getAttribute("display"));
   let charNumber = Math.floor(Math.random() * 83);
   let fetchURL = `${apiUrl}/${charNumber}`;
   console.log(fetchURL);
@@ -47,10 +49,11 @@ const getCharacter = async () => {
     `${charName} , ${charHeight} , ${charGender} , ${charBirth} , ${charHome}`
   );
   document.querySelector("#name").value = charName;
-  document.querySelector("#height").value = charHeight;
+  document.querySelector("#height").value = `${charHeight} cm`;
   document.querySelector("#gender").value = charGender;
   document.querySelector("#birth").value = charBirth;
   document.querySelector("#homeworld").value = charHome;
+  document.querySelector(".spinner-container").style.visibility = "hidden";
   return resJson;
 };
 

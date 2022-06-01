@@ -1,25 +1,44 @@
-* {
+/* * {
   display: block;
-}
+} */
 
 body {
   background-color: black;
-  background-image: url("./assets/UG6XrK.jpg");
+  background-image: url("./assets/pexels-photo-1169754.jpeg");
   background-repeat: no-repeat;
   background-size: 100%;
 }
 
-.char-container {
-  width: 500px;
-  height: 250px;
+.char-container,
+.spinner-container {
+  width: 450px;
+  height: 200px;
   margin: 0 auto;
-  border: 2px solid black;
+  border: 2px solid yellow;
   border-radius: 10px;
   padding: 50px 60px;
+  position: fixed;
+  top: 50vh;
+  left: 38vw;
+}
+.spinner-container {
+  z-index: 8;
+  visibility: hidden;
+  text-align: center;
+}
+.char-container {
+  z-index: 9;
+}
+form {
+  text-align: center;
+  justify-content: center;
 }
 
 .logo {
   justify-content: center;
+  position: fixed;
+  top: 0px;
+  left: 35vw;
 }
 img {
   margin: 80px auto;
@@ -36,8 +55,26 @@ button {
   background-color: black;
   border-radius: 10px;
   border: 1px solid yellow;
+  position: fixed;
+  top: 85vh;
+  left: 49vw;
 }
 
 input {
-  margin: 25px auto;
+  display: flex;
+  margin: 15px auto;
+  text-align: center;
+  background: transparent;
+  color: rgb(246, 250, 43);
+  border: none;
+  font-size: 20px;
+}
+
+input[name="name"] {
+  font-size: 36px;
+}
+.fa-spin {
+  font-size: 200px;
+  color: violet;
+  /* visibility: hidden; */
 }
