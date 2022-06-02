@@ -12,6 +12,14 @@
       integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
       crossorigin="anonymous"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="./style.css" />
 
     <!-- The JavaScript I wrote and using defer -->
     <script defer src="script.js"></script>
@@ -19,19 +27,19 @@
     <title>Exercise</title>
   </head>
   <body>
+    <h1>Currency Converter</h1>
     <div class="container">
       <form method="get" action="Index.html">
-        <label for="firstCurrency">First Currency</label>
+        <h3>From:</h3>
         <select name="firstCurrency" id="firstCurrency"></select>
-        <label for="secondCurrency">Second Currency</label>
+        <h3>To:</h3>
         <select name="secondCurrency" id="secondCurrency"></select>
-        <label for="amount">Amount</label>
+        <h3>Amount:</h3>
         <input type="text" name="amount" id="amount" />
         <input type="submit" id="convert" value="Convert" />
         <input type="submit" id="reverseConvert" value="Reverse" />
+        <div class="conversion-result" id="conversion"></div>
       </form>
     </div>
-
-    <div class="conversion-result" id="conversion"></div>
   </body>
 </html>

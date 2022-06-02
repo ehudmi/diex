@@ -1,0 +1,50 @@
+body {
+  background-image: url("./assets/PILES-OF-AMERICAN-MONEY.jpg");
+  font-family: "Merriweather", serif;
+  box-sizing: border-box;
+  background-size: 100%;
+}
+
+.container {
+  width: 550px;
+  height: 700px;
+  background-color: rgba(32, 35, 95, 0.532);
+  display: flex;
+  margin-top: 60px;
+}
+h1 {
+  margin-top: 50px;
+  justify-content: center;
+  text-align: center;
+  color: rgb(211, 162, 57);
+  font-size: 80px;
+  text-shadow: 2px 2px #2d3030;
+}
+form {
+  justify-content: center;
+  text-align: center;
+  margin: 50px auto;
+}
+
+label,
+input,
+select {
+  justify-content: center;
+  text-align: center;
+  margin: 20px 10px;
+  padding: 30px auto;
+  color: white;
+  background-color: rgba(14, 15, 47, 0.501);
+}
+
+h3 {
+  text-align: center;
+  justify-content: center;
+  padding: 40px;
+  color: white;
+}
+
+#conversion {
+  color: white;
+  font-size: 50px;
+}

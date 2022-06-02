@@ -58,15 +58,18 @@ const loadList = async () => {
 // Async function for retrieving the conversion pair data
 
 const getConversion = async () => {
+  while (document.querySelector("#conversion").firstChild) {
+    document
+      .querySelector("#conversion")
+      .removeChild(document.querySelector("#conversion").firstChild);
+  }
   let res = await fetch(convertUrl);
   let resJson = await res.json();
-  let conversionResult = document.createTextNode(
-    `${resJson.conversion_result}`
-  );
-  document.querySelector("#conversion").appendChild(conversionResult);
-  document
-    .querySelector("#conversion")
-    .appendChild(document.createTextNode(`${convertObject.targetCurrency}`));
+  let conversionResult = `${Number(resJson.conversion_result).toFixed(2)} ${
+    convertObject.targetCurrency
+  }`;
+  let conversionResultText = document.createTextNode(conversionResult);
+  document.querySelector("#conversion").appendChild(conversionResultText);
   return resJson;
 };
 
