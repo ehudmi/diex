@@ -27,14 +27,12 @@
 const apiUrl = "https://www.swapi.tech/api/people";
 
 const getCharacter = async () => {
+  document.forms[0].style.visibility = "hidden";
   document.querySelector(".spinner-container").style.visibility = "visible";
-  // console.log(document.querySelector("i").getAttribute("display"));
   let charNumber = Math.floor(Math.random() * 83);
   let fetchURL = `${apiUrl}/${charNumber}`;
-  console.log(fetchURL);
   let res = await fetch(fetchURL);
   let resJson = await res.json();
-  console.log(resJson);
   let charName = resJson.result.properties.name;
   let charHeight = resJson.result.properties.height;
   let charGender = resJson.result.properties.gender;
@@ -43,18 +41,16 @@ const getCharacter = async () => {
   let charHome = "";
   let planetRes = await fetch(charHomeUrl);
   let planetResJson = await planetRes.json();
-  console.log(planetResJson);
   charHome = planetResJson.result.properties.name;
-  console.log(
-    `${charName} , ${charHeight} , ${charGender} , ${charBirth} , ${charHome}`
-  );
   document.querySelector("#name").value = charName;
   document.querySelector("#height").value = `${charHeight} cm`;
   document.querySelector("#gender").value = charGender;
   document.querySelector("#birth").value = charBirth;
   document.querySelector("#homeworld").value = charHome;
   document.querySelector(".spinner-container").style.visibility = "hidden";
+  document.forms[0].style.visibility = "visible";
   return resJson;
 };
 
+window.addEventListener("load", getCharacter);
 document.querySelector("#search").addEventListener("click", getCharacter);
