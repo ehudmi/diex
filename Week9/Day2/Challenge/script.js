@@ -23,7 +23,7 @@ const sortWords = (wordArray) => {
     if (wordArray.length > 4) {
       resolve(wordArray.sort());
     }
-    reject("the array is longer than 4");
+    reject("the array is shorter than 4");
   });
 };
 

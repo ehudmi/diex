@@ -34,7 +34,7 @@ const formatDate = (dateelem) => {
 
   dateelem.getDate() < 10
     ? (theDay = "0" + dateelem.getDate())
-    : (theDay = dateelem.getDate() + 1);
+    : (theDay = dateelem.getDate());
 
   dateelem.getHours() < 10
     ? (theHour = "0" + dateelem.getHours())
