@@ -12,14 +12,20 @@
 //   setTimeout(resolve, 3000, "foo");
 // });
 
-const promiseArray = [promise1, promise2, promise3];
+const myPromiseArray = [
+  Promise.resolve(3),
+  42,
+  new Promise((resolve, reject) => {
+    setTimeout(resolve, 3000, "foo");
+  }),
+];
 
-const resolvePromise = () =>
+const resolvePromise = (promiseArray) =>
   Promise.all(promiseArray)
     .then((result) => console.log(result))
     .catch((error) => console.log(error));
 
-resolvePromise();
+resolvePromise(myPromiseArray);
 
 // 2nd Challenge
 // Instructions
