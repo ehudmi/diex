@@ -6,9 +6,9 @@ SELECT DISTINCT department_id FROM employees;
 -- Write a query to get the details of all employees from the employee table, do so in descending order by first name.
 SELECT * FROM employees ORDER BY first_name DESC;
 -- Write a query to get the names (first_name, last_name), salary and 15% of salary as PF (ie. alias) for all the employees.
-SELECT (first_name , last_name),salary,salary*0.15 AS PF FROM employees;
+SELECT (first_name , last_name), salary, salary*0.15 AS PF FROM employees;
 -- Write a query to get the employee IDs, names (first_name, last_name) and salary in ascending order according to their salary.
-SELECT employee_id,(first_name, last_name),salary FROM employees ORDER BY salary ASC;
+SELECT employee_id,(first_name, last_name), salary FROM employees ORDER BY salary ASC;
 -- Write a query to get the total sum of all salaries paid to the employees.
 SELECT SUM(salary) FROM employees ;
 -- Write a query to get the maximum and minimum salaries paid to the employees.

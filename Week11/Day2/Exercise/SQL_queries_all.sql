@@ -57,17 +57,38 @@ UPDATE film SET language_id=2 WHERE film_id = 12 OR film_id =19 OR film_id=35 OR
 -- Answer: It's an easy step as there are no constraints
 
 -- Find out how many rentals are still outstanding (ie. have not been returned to the store yet).
+SELECT COUNT(rental_id) FROM rental WHERE return_date IS NULL;
 
 -- Find the 30 most expensive movies which are outstanding (ie. have not been returned to the store yet)
+SELECT title,rental_rate FROM film f INNER JOIN inventory i ON f.film_id=i.film_id  INNER JOIN rental r 
+ON i.inventory_id=r.inventory_id ORDER BY rental_rate DESC LIMIT 30;
 
 -- Your friend is at the store, and decides to rent a movie. He knows he wants to see 4 movies,
 -- but he can’t remember their names. Can you help him find which movies he wants to rent?
 -- The 1st film : The film is about a sumo wrestler, and one of the actors is Penelope Monroe.
-
+SELECT f.film_id,title,description FROM film f INNER JOIN film_actor fa ON f.film_id=fa.film_id  
+INNER JOIN actor a ON fa.actor_id=a.actor_id WHERE a.first_name='Penelope' AND a.last_name='Monroe' 
+AND POSITION (LOWER('sumo wrestler') in LOWER(f.description)) !=0 ;
 -- The 2nd film : A short documentary (less than 1 hour long), rated “R”.
-
+SELECT f.film_id,title,description FROM film f INNER JOIN film_category fc ON f.film_id=fc.film_id  
+INNER JOIN category c ON fc.category_id=c.category_id WHERE c.name='Documentary' 
+AND f.rating='R' AND f.length<60;
 -- The 3rd film : A film that his friend Matthew Mahan rented. He paid over $4.00 for the rental,
 -- and he returned it between the 28th of July and the 1st of August, 2005.
-
+SELECT title,rental_rate FROM film f INNER JOIN inventory i ON f.film_id=i.film_id  INNER JOIN rental r 
+ON i.inventory_id=r.inventory_id INNER JOIN customer c ON r.customer_id=c.customer_id
+WHERE c.first_name='Matthew' AND c.last_name='Mahan' AND r.return_date BETWEEN '28/07/2005' AND '01/08/2005'
+AND f.rental_rate>4;
 -- The 4th film : His friend Matthew Mahan watched this film, as well.
 -- It had the word “boat” in the title or description, and it looked like it was a very expensive DVD to replace.
+SELECT title, description, replacement_cost 
+FROM film f
+INNER JOIN inventory i ON f.film_id=i.film_id
+INNER JOIN rental r ON i.inventory_id=r.inventory_id
+INNER JOIN customer c ON r.customer_id=c.customer_id
+WHERE 
+c.first_name='Matthew' AND 
+c.last_name='Mahan' AND
+(f.title ILIKE '%boat%' OR
+f.description ILIKE '%boat%')
+ORDER BY f.replacement_cost DESC;

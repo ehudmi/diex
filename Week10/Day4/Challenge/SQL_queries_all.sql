@@ -62,27 +62,29 @@ NULL
 -- Q1. What will be the OUTPUT of the following statement?
 
     SELECT COUNT(*) 
-    FROM FirstTab AS ft WHERE ft.id NOT IN ( SELECT id FROM SecondTab WHERE id IS NULL )
+    FROM FirstTab AS ft WHERE ft.id NOT IN ( SELECT id FROM SecondTab WHERE id IS NULL );
 -- Predicted - the output will be 3
 -- Actual - the output is 0 - can't join on null
 
 -- Q2. What will be the OUTPUT of the following statement?
 
     SELECT COUNT(*) 
-    FROM FirstTab AS ft WHERE ft.id NOT IN ( SELECT id FROM SecondTab WHERE id = 5 )
+    FROM FirstTab AS ft WHERE ft.id NOT IN ( SELECT id FROM SecondTab WHERE id = 5 );
 -- Predicted - the output will be 3
 -- Actual - the output is 2 - can't join on null
 
 -- Q3. What will be the OUTPUT of the following statement?
 
     SELECT COUNT(*) 
-    FROM FirstTab AS ft WHERE ft.id NOT IN ( SELECT id FROM SecondTab )
+    FROM FirstTab AS ft WHERE ft.id NOT IN ( SELECT id FROM SecondTab );
 -- Predicted - the output will be 2
 -- Actual - the output is 0 - the select id does not generate a list to compare?
 
 -- Q4. What will be the OUTPUT of the following statement?
 
     SELECT COUNT(*) 
-    FROM FirstTab AS ft WHERE ft.id NOT IN ( SELECT id FROM SecondTab WHERE id IS NOT NULL )
+    FROM FirstTab AS ft WHERE ft.id NOT IN ( SELECT id FROM SecondTab WHERE id IS NOT NULL );
 -- Predicted - the output will be 2
 -- Actual - the output is 2 - there is a specific id to compare
+
+-- Can't use NULL with IN
