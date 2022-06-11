@@ -13,6 +13,19 @@ INSERT INTO items (description,price) VALUES ('big lamp',300), ('small lamp',150
 INSERT INTO orders (order_id,order_date,item_id,quantity) VALUES (1,'01/06/2020',1,4),(1,'01/06/2020',3,2),
 (1,'01/06/2020',4,1),(2,'02/06/2020',3,1),(2,'02/06/2020',2,2),(2,'02/06/2020',5,2);
 -- Create a function that returns the total price for a given order.
+CREATE OR REPLACE FUNCTION calc_total (check_order_id INTEGER)
+RETURNS INTEGER 
+LANGUAGE PLPGSQL
+AS $$
+DECLARE
+Total_Price INTEGER;
+BEGIN
+Total_Price:=(SELECT SUM
+(quantity*(SELECT price FROM items i WHERE i.item_id=o.item_id)) orderItemsPrice
+FROM orders o Where order_id=check_order_id) ;
+RETURN Total_Price;
+END;
+$$;
 
 -- Bonus :
 -- Create a table called users.
