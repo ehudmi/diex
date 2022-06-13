@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Font Awesome -->
+    <script
+      src="https://kit.fontawesome.com/0a000b12b9.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- The JavaScript I wrote and using defer -->
+    <script defer src="./script.js"></script>
+
+    <link rel="stylesheet" href="./style.css" />
+
+    <title>Better TO-DO List</title>
+  </head>
+  <body>
+    <div class="logo">
+      <img src="./assets/Star_Wars_logo-1.png" alt="" />
+    </div>
+    <div class="todo-container">
+      <form action="">
+        <label for="name">Task Name</label>
+        <input class="todo-data" type="text" name="name" id="name" />
+        <label for="description">Task Description</label>
+        <input
+          class="todo-data"
+          type="text"
+          name="description"
+          id="description"
+        />
+        <label for="start-time">Choose a starting time for your task:</label>
+        <input
+          type="datetime-local"
+          class="todo-data"
+          id="start-time"
+          name="start-time"
+          value="2018-06-12T19:30"
+          min="2018-06-07T00:00"
+          max="2018-06-14T00:00"
+        />
+        <label for="end-time">Choose an ending time for your task:</label>
+        <input
+          type="datetime-local"
+          class="todo-data"
+          id="end-time"
+          name="end-time"
+          value="2018-06-12T19:30"
+          min="2018-06-07T00:00"
+          max="2018-06-14T00:00"
+        />
+        <button type="submit">Add Task</button>
+      </form>
+    </div>
+    <div class="spinner-container">
+      <i class="fa-solid fa-sync fa-spin d-none"></i>
+    </div>
+  </body>
+</html>
