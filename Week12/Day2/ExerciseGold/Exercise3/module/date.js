@@ -1,16 +1,13 @@
 // Require the prompt module
-var Holidays = require("date-holidays");
-var hd = new Holidays("IL");
+const Holidays = require("date-holidays");
+const hd = new Holidays("IL");
 
 const nextHoliday = () => {
   let toDay = new Date();
   let holidays2022 = hd.getHolidays(2022);
   holidays2022.find((item) =>
-    new Date(item.date).getMonth() > toDay.getMonth()
-      ? console.log(item.date)
-      : null
+    new Date(item.start) < toDay ? console.log(item.date) : console.log(`null`)
   );
-  // console.log(hd.getHolidays(2022));
 };
 module.exports = {
   nextHoliday: nextHoliday,

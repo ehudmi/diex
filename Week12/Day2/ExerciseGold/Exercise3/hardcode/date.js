@@ -6,6 +6,7 @@ const nextHoliday = () => {
     .filter((k) => !!result[k])
     .map((k) => `${result[k]} ${k}`)
     .join(", ");
+
   console.log(`next holiday is in ${timeToHoliday} from today`);
 };
 

@@ -7,7 +7,6 @@ console.log(c);
 
 const server = http.createServer((req, res) => {
   res.setHeader("Content-Type", "text/html");
-  //   res.write(<h1>Hi there at the frontend</h1>);
   res.end(`<p>My Module is:${c}</p>
     <h1>Hi there at the frontend</h1>`);
 
