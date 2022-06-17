@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- General meta info -->
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Ehud meta info -->
+    <title>Ehud's Exercise</title>
+    <meta name="description" content="Ehud's  Exercise" />
+    <meta name="author" content="Ehud Miron" />
+  </head>
+  <body>
+    <form method="post" action="http://localhost:3000/item">
+      <label for="id">Item Id</label>
+      <input type="number" name="id" id="id" pattern="[0-9]" />
+      <label for="itemName">Item Name</label>
+      <input type="text" name="itemName" id="itemName" />
+      <label for="price">Price</label>
+      <input type="number" name="price" id="price" pattern="[0-9]" />
+      <input type="submit"></input>
+    </form>
+  </body>
+</html>
