@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form action="./register.html" method="post">
+      <label for="firstName">First Name</label>
+      <input type="text" name="firstName" id="firstName" />
+      <label for="lastName">Last Name</label>
+      <input type="text" name="lastName" id="lastName" />
+      <label for="email">Email</label>
+      <input type="email" name="email" id="email" />
+      <label for="userName">username</label>
+      <input type="text" name="userName" id="userName" />
+      <label for="password">password</label>
+      <input type="password" name="password" id="password" />
+      <input type="submit" value="Register" id="submit" disabled />
+    </form>
+    <div id="response-container"></div>
+  </body>
+  <script>
+    const inputs = [
+      { name: "firstName", isBlank: true },
+      { name: "lastName", isBlank: true },
+      { name: "email", isBlank: true },
+      { name: "userName", isBlank: true },
+      { name: "password", isBlank: true },
+    ];
+    const registerForm = document.forms[0];
+    const inputState = (e) => {
+      if (e.target.value !== "") {
+        let inputIndex = inputs.findIndex((item) => item.name == e.target.name);
+        inputs[inputIndex].isBlank = false;
+        if (inputs.every((item) => item.isBlank == false)) {
+          registerForm.querySelector("#submit").removeAttribute("disabled");
+        }
+      } else
+        registerForm.querySelector("#submit").setAttribute("disabled", true);
+    };
+    registerForm
+      .querySelector("#firstName")
+      .addEventListener("change", inputState);
+    registerForm
+      .querySelector("#lastName")
+      .addEventListener("change", inputState);
+    registerForm.querySelector("#email").addEventListener("change", inputState);
+    registerForm
+      .querySelector("#userName")
+      .addEventListener("change", inputState);
+    registerForm
+      .querySelector("#password")
+      .addEventListener("change", inputState);
+    registerForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      let formData = new FormData(e.target);
+      const response = await fetch("http://localhost:3000/register", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(Object.fromEntries(formData)),
+      });
+      while (document.querySelector("#response-container").firstChild) {
+        document
+          .querySelector("#response-container")
+          .removeChild(
+            document.querySelector("#response-container").firstChild
+          );
+      }
+      const text = await response.text();
+      let messageH5 = document.createElement("h5");
+      let messageText = document.createTextNode(text);
+      document.querySelector("#response-container").appendChild(messageH5);
+      messageH5.appendChild(messageText);
+    });
+  </script>
+</html>
