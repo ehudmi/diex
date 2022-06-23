@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('../partials/head'); %>
+  </head>
+  <body class="container">
+    <header><%- include('../partials/header'); %></header>
+    <div class="formContainer">
+      <form action="./search.ejs" method="POST">
+        <label for="title">Search Title</label>
+        <input type="text" id="title" name="title" />
+        <button>Search</button>
+      </form>
+      <form action="./search.ejs" method="POST">
+        <label for="category">Search Category</label>
+        <select name="category" id="category"></select>
+        <button>Search</button>
+      </form>
+    </div>
+    <footer><%- include('../partials/footer'); %></footer>
+  </body>
+</html>
