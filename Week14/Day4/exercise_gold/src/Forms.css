@@ -1,0 +1,17 @@
+* {
+  box-sizing: content-box !important;
+}
+.formContainer {
+  position: fixed;
+  margin: 100px;
+  top: 100 px;
+  left: 100 px;
+  height: 200px;
+  width: 200px;
+  display: inline;
+  text-align: center;
+}
+header {
+  font-size: x-large;
+  font-weight: bold;
+}
