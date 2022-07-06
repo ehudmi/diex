@@ -13,7 +13,6 @@ class Form2 extends Component {
   }
   submitForm2 = (e) => {
     e.preventDefault();
-    console.log(e.target.name);
     this.setState({
       firstName: e.target.firstName.value,
       lastName: e.target.lastName.value,
@@ -21,13 +20,11 @@ class Form2 extends Component {
       email: e.target.email.value,
       submitted: true,
     });
-    console.log(this.state.submitted);
   };
   resetForm = () => {
     this.setState({ submitted: false });
   };
   render() {
-    console.log(this.state.submitted);
     return (
       <div>
         {!this.state.submitted ? (
