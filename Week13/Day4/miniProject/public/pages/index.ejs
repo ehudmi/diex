@@ -5,15 +5,8 @@
   </head>
   <body class="container">
     <header><%- include('../partials/header'); %></header>
-    <h2>Variable</h2>
-    <ul>
-      <% items.forEach(function(item) { %>
-      <li>
-        <strong><%= item.title %></strong>
-        Link <%= item.link %>, Summary <%= item.summary %>
-      </li>
-      <% }); %>
-    </ul>
+    <h2>Posts</h2>
+    <%- include('../partials/posts'); %>
 
     <footer><%- include('../partials/footer'); %></footer>
   </body>

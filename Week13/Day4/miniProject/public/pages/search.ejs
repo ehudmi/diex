@@ -5,18 +5,32 @@
   </head>
   <body class="container">
     <header><%- include('../partials/header'); %></header>
-    <div class="postContainer"><%- include('../partials/posts'); %></div>
     <div class="formContainer">
-      <form action="./search.ejs" method="POST">
+      <form id="searchTitle" action="/search/title" method="POST">
         <label for="title">Search Title</label>
         <input type="text" id="title" name="title" />
-        <button>Search</button>
+        <button type="submit">Search</button>
       </form>
-      <form action="./search.ejs" method="POST">
+      <form id="searchCategory" action="/search/category" method="POST">
         <label for="category">Search Category</label>
-        <select name="category" id="category"></select>
-        <button>Search</button>
+        <select name="category" id="category">
+          <option selected disabled>Choose Category</option>
+          <% categories.forEach(category => { %>
+          <option value="<%= category%>"><%= category %></option>
+          <% }); %>
+        </select>
+        <button type="submit">Search</button>
       </form>
+      <div class="col-lg-8">
+        <% if(typeof filteredPosts !== "undefined" && filteredPosts.length > 0)
+        { %> <%- include("../partials/posts.ejs",{items: filteredPosts}) %> <% }
+        else if(typeof filteredPosts !== "undefined" && filteredPosts.length <
+        1) { %>
+        <h6 class="display-6 text-lg-start text-center">
+          Could not find anything!
+        </h6>
+        <% } %>
+      </div>
     </div>
     <footer><%- include('../partials/footer'); %></footer>
   </body>
