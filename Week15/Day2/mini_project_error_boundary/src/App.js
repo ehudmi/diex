@@ -15,7 +15,7 @@ function App() {
   return (
     <Fragment>
       <Navbar bg="dark" variant="dark">
-        <Navbar.Brand href="#home">Error boundaries in react</Navbar.Brand>
+        <Navbar.Brand href="#home">Error boundaries in react </Navbar.Brand>
       </Navbar>
 
       <Container fluid>
