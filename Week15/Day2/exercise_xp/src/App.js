@@ -11,13 +11,13 @@ function App() {
         <BuggyCounter />
       </ErrorBoundary>
       <hr />
-      {/* <ErrorBoundary>
+      <ErrorBoundary>
         <BuggyCounter />
       </ErrorBoundary>
       <ErrorBoundary>
         <BuggyCounter />
       </ErrorBoundary>
-      <hr /> */}
+      <hr />
       <BuggyCounter />
       <Color />
     </>
