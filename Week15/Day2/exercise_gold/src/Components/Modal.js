@@ -13,7 +13,7 @@ class Modal extends Component {
           <div>Error: Something went wrong!</div>
           <details>
             {this.props.errorInfo}
-            <br>Please try it again</br>
+            <p>Please try it again</p>
           </details>
           <button onClick={this.props.clickAction}>Close</button>
         </div>
