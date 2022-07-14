@@ -7,6 +7,7 @@ import Example1 from "./Components/Example1";
 import Example2 from "./Components/Example2";
 import Example3 from "./Components/Example3";
 
+// setting up data and function for exercise 3 and button
 const data = {
   key1: "myusername",
   email: "mymail@gmail.com",
@@ -26,11 +27,10 @@ const getWebhook = async () => {
   );
   console.log(response);
 };
-
 const Button = () => {
   return <button onClick={getWebhook}>Click Me</button>;
 };
-
+// setting up the functional components for exercise 1 and all its parts
 const HomeScreen = () => {
   return (
     <div>
@@ -45,10 +45,11 @@ const ProfileScreen = () => {
     </div>
   );
 };
-
+// The functional component for shop will throw an error
 const ShopScreen = () => {
   throw new Error("This is foobar");
 };
+// Navbar for the routes for exercise 1
 function NavList() {
   let activeClassName = "underline";
   return (
@@ -88,7 +89,7 @@ function NavList() {
     </nav>
   );
 }
-
+// This is the start of the actual App function
 function App() {
   return (
     <div>
