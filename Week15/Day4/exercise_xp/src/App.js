@@ -51,35 +51,35 @@ const ShopScreen = () => {
 };
 // Navbar for the routes for exercise 1
 function NavList() {
-  let activeClassName = "underline";
+  let activeClassName = "nav-link active";
   return (
     <nav>
-      <ul>
-        <li>
+      <ul className="nav nav-pills">
+        <li className="nav-item">
           <NavLink
             to="/"
             className={({ isActive }) =>
-              isActive ? activeClassName : undefined
+              isActive ? activeClassName : "nav-link"
             }
           >
             Home
           </NavLink>
         </li>
-        <li>
+        <li className="nav-item">
           <NavLink
             to="profile"
             className={({ isActive }) =>
-              isActive ? activeClassName : undefined
+              isActive ? activeClassName : "nav-link"
             }
           >
             Profile
           </NavLink>
         </li>
-        <li>
+        <li className="nav-item">
           <NavLink
             to="shop"
             className={({ isActive }) =>
-              isActive ? activeClassName : undefined
+              isActive ? activeClassName : "nav-link"
             }
           >
             Shop
