@@ -24,8 +24,7 @@ const getWebhook = async () => {
       body: JSON.stringify(data),
     }
   );
-  const json = response.json();
-  console.log(json);
+  console.log(response);
 };
 
 const Button = () => {
@@ -122,7 +121,6 @@ function App() {
                 </ErrorBoundary>
               }
             />
-            {/* <Route path="/webhook" element={<Button />} /> */}
           </Routes>
         </BrowserRouter>
       </div>
