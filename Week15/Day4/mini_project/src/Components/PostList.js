@@ -11,6 +11,7 @@ class PostList extends Component {
   async componentDidMount() {
     const response = await fetch("https://jsonplaceholder.typicode.com/posts", {
       method: "GET",
+      mode: "no-cors",
       headers: { "Content-type": "application/json" },
     });
     const json = await response.json();
