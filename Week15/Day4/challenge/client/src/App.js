@@ -29,8 +29,9 @@ class App extends Component {
   };
   render() {
     return (
-      <div>
+      <div style={{ textAlign: "center" }}>
         <header>{this.state.message}</header>
+        <h2 style={{ fontWeight: "bold" }}>Post to Server:</h2>
         <form onSubmit={this.submitText}>
           <input type={"text"} name="userInput" />
           <button>Submit</button>
