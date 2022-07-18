@@ -1,3 +1,4 @@
+import "./Game.css";
 import React, { Component } from "react";
 import Card from "./Card";
 import heroes from "./superheroes.json";
@@ -49,19 +50,30 @@ class Game extends Component {
   };
   render() {
     return (
-      <div>
-        <h2>{this.state.topScore}</h2>
-        <h2>{this.state.currentScore}</h2>
-        {superheroes.map(({ id, name, image, occupation }) => {
-          return (
-            <div key={id}>
-              <Card
-                superhero={{ id, name, image, occupation }}
-                clickAction={this.clickAction}
-              />
-            </div>
-          );
-        })}
+      <div className="wrapper">
+        <div className="titleContainer">
+          <h1 className="header">Superheroes Memory Game</h1>
+          <nav className="score">
+            <p>Top Score: {this.state.topScore}</p>
+            <p>Score: {this.state.currentScore}</p>
+          </nav>
+          <h2 className="subHeader">
+            Get points by clicking on an image but don't click on any more than
+            once!
+          </h2>
+        </div>
+        <div className="cardContainer">
+          {superheroes.map(({ id, name, image, occupation }) => {
+            return (
+              <div key={id}>
+                <Card
+                  superhero={{ id, name, image, occupation }}
+                  clickAction={this.clickAction}
+                />
+              </div>
+            );
+          })}
+        </div>
         ;
       </div>
     );

@@ -1,0 +1,11 @@
+.imgCard {
+  box-shadow: 5px 5px 5px rgb(169, 169, 169);
+  transition: 0.3s ease-in-out;
+  width: 225px;
+  height: 300px;
+  border-radius: 3px;
+}
+.imgCard:hover {
+  transform: scale(1.1);
+  box-shadow: 10px 10px 10px rgb(169, 169, 169);
+}

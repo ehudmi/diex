@@ -1,3 +1,4 @@
+import "./Card.css";
 import React, { Component } from "react";
 
 class Card extends Component {
@@ -10,7 +11,7 @@ class Card extends Component {
     const { id, name, image, occupation } = this.state;
     return (
       <div onClick={this.props.clickAction} id={id}>
-        <img alt="" src={image} width="100px" height={"100px"} />
+        <img className="imgCard" alt="" src={image} />
         <h4>
           <span>Name: </span>
           {name}
