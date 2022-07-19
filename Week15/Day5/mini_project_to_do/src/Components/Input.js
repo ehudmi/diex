@@ -8,7 +8,7 @@ class Input extends Component {
   render() {
     return (
       <div>
-        <input />
+        <input onKeyDown={this.props.onKey} />
       </div>
     );
   }
