@@ -20,12 +20,12 @@ const moviesReducer = (state = INITIAL_STATE) => {
 
 // console.log(moviesReducer());
 const selectedMovieReducer = (state = "", action) => {
-  console.log(action.type);
   switch (action.type) {
     case "MOVIE_SELECTED":
-      return { ...state, selected: action.payload };
+      // console.log(action.payload);
+      return action.payload;
     default:
-      return { ...state };
+      return state;
   }
 };
 

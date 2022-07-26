@@ -1,7 +1,7 @@
-const select = (selectedMovie) => {
+const selectMovie = (selectedMovie) => {
   return {
     type: "MOVIE_SELECTED",
     payload: selectedMovie,
   };
 };
-export default select;
+export default selectMovie;

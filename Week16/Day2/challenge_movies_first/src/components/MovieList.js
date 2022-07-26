@@ -1,10 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
-import select from "../actions";
-import MovieDetails from "./MovieDetails";
+import selectMovie from "../actions";
 
 function MovieList(props) {
-  console.log(props.movies);
   return (
     <div>
       <ul>
@@ -12,7 +10,9 @@ function MovieList(props) {
           return (
             <div key={index}>
               <li>{movie.title}</li>
-              <button onClick={console.log(movie.title)}>details</button>
+              <button value={movie.title} onClick={props.selectMovie}>
+                details
+              </button>
             </div>
           );
         })}
@@ -22,11 +22,16 @@ function MovieList(props) {
 }
 
 const mapStateToProps = (state) => {
-  return { movies: state.movies };
+  // console.log(state.moviesState.movies);
+  return { movies: state.moviesState.movies };
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return { selectMovie: (e) => dispatch(select(e.target.value)) };
+  return {
+    selectMovie: (event) => {
+      dispatch(selectMovie(event.target.value));
+    },
+  };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(MovieList);

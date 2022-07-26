@@ -1,12 +1,12 @@
 import "./App.css";
 import MovieList from "./components/MovieList";
-// import MovieDetails from "./components/MovieDetails";
+import MovieDetails from "./components/MovieDetails";
 
 function App() {
   return (
     <div>
       <MovieList />
-      {/* <MovieDetails /> */}
+      <MovieDetails />
     </div>
   );
 }
