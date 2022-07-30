@@ -5,11 +5,18 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { createStore } from "redux";
 import { Provider } from "react-redux";
-import reducers from "./reducers";
+import transactionReducer from "./reducers/transactionReducer";
+
+let initialState = {
+  currentIndex: -1,
+  list: JSON.parse(localStorage.getItem("transactions")),
+};
+
+const store = createStore(transactionReducer, initialState);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <Provider store={createStore(reducers)}>
+  <Provider store={store}>
     <App />
   </Provider>
 );

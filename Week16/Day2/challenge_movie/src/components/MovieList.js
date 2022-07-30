@@ -1,12 +1,13 @@
 import React from "react";
 import { connect } from "react-redux";
-import { movieSelected } from "../actions";
+import { movieSelected } from "../actions/index";
 
-function MovieList(props) {
+function MovieList({ movies, movieSelected }) {
   //   console.log(props.movies);
   return (
     <div>
-      {props.movies.map((item, index) => {
+      <h1>Movie List</h1>
+      {movies.map((item, index) => {
         return (
           <div key={index}>
             {item.title}
