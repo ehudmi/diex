@@ -11,34 +11,33 @@ class CardContainer extends Component {
     this.state = {
       data: [
         {
-          label: "points",
           icon: points,
-          number: 3000,
+          label: "Points",
+          number: "3,000",
         },
         {
-          label: "lightnings",
           icon: lightning,
-          number: 6540,
+          label: "Lightnings",
+          number: "6,540",
         },
         {
-          label: "shakas",
           icon: shakas,
-          number: 337010,
+          label: "Shakas",
+          number: "337,010",
         },
         {
-          label: "diamonds",
           icon: diamonds,
-          number: 98661,
+          label: "Diamonds",
+          number: "98,661",
         },
       ],
     };
   }
-
   render() {
     return this.state.data.map((item, index) => {
       return (
         <div key={index}>
-          <Card label={item.label} icon={item.icon} number={item.number} />
+          <Card icon={item.icon} label={item.label} number={item.number} />
         </div>
       );
     });
