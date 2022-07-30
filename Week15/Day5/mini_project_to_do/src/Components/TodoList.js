@@ -1,3 +1,4 @@
+import "./TodoList.css";
 import React, { Component } from "react";
 import Input from "./Input";
 
@@ -11,9 +12,9 @@ class TodoList extends Component {
   deleteItem = (event) => {
     let toDoItems = [...this.state.items];
     toDoItems.splice(
-      toDoItems.findIndex((item) => {
-        return Number(item.id) === Number(event.target.id);
-      }),
+      toDoItems.findIndex(
+        (item) => Number(item.id) === Number(event.target.id)
+      ),
       1
     );
     this.setState({ items: toDoItems });
@@ -41,12 +42,18 @@ class TodoList extends Component {
   };
   render() {
     return (
-      <div>
+      <div className="container">
+        <h1 className="header">Todo's</h1>
         {this.state.items.map((item) => {
           return (
-            <h1 id={item.id} key={item.id} onClick={this.deleteItem}>
+            <span
+              className="todoItem"
+              id={item.id}
+              key={item.id}
+              onClick={this.deleteItem}
+            >
               {item.toDoContent}
-            </h1>
+            </span>
           );
         })}
         <Input onKey={this.addItem} />

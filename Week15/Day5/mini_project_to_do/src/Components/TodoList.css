@@ -1,0 +1,36 @@
+body {
+  background-color: rgb(246, 244, 244);
+}
+
+.container {
+  box-sizing: border-box;
+  text-align: center;
+  justify-content: center;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.todoItem {
+  text-align: start;
+  display: block;
+  background-color: #fff;
+  line-height: 1.5rem;
+  padding: 10px 20px;
+  margin: 0;
+  border-bottom: 1px solid #e0e0e0;
+  font-size: 14px;
+  font-weight: normal;
+}
+
+.todoItem:hover {
+  text-decoration: line-through;
+  cursor: pointer;
+}
+
+.header {
+  color: #2196f3;
+  font-size: 4.2rem;
+  line-height: 110%;
+  margin: 2.8rem 0 1.68rem 0;
+  font-weight: 100;
+}

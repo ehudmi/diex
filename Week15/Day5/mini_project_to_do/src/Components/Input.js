@@ -1,3 +1,4 @@
+import "./Input.css";
 import React, { Component } from "react";
 
 class Input extends Component {
@@ -8,7 +9,8 @@ class Input extends Component {
   render() {
     return (
       <div>
-        <input onKeyDown={this.props.onKey} />
+        <label name="todo">Add a new todo:</label>
+        <input name="todo" onKeyDown={this.props.onKey} />
       </div>
     );
   }
