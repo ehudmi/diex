@@ -1,25 +1,23 @@
 import React from "react";
 import { connect } from "react-redux";
 
-function MovieDetails({ movieSelected }) {
-  if (!movieSelected) {
+function MovieDetails(props) {
+  if (!props.movieSelected) {
+    <div>
+      <h1>Details</h1>
+    </div>;
+  } else {
     return (
-      <div>
+      <div style={{ marginLeft: "200px" }}>
         <h1>Details</h1>
+        <p>Title: {props.movieSelected.title}</p>
+        <p>Release Date: {props.movieSelected.releaseDate}</p>
+        <p>Rating: {props.movieSelected.rating}</p>
       </div>
     );
-  } else
-    return (
-      <div>
-        <h1>Details</h1>
-        <p>{movieSelected.title}</p>
-        <p>{movieSelected.releaseDate}</p>
-        <p>{movieSelected.rating}</p>
-      </div>
-    );
+  }
 }
 const mapStateToProps = (state) => {
-  // console.log(state);
   return { movieSelected: state.selectedMovie };
 };
 export default connect(mapStateToProps)(MovieDetails);

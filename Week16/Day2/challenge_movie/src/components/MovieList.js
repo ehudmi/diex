@@ -1,17 +1,32 @@
 import React from "react";
 import { connect } from "react-redux";
-import { movieSelected } from "../actions/index";
+import movieSelected from "../actions/index";
 
 function MovieList({ movies, movieSelected }) {
   //   console.log(props.movies);
   return (
-    <div>
+    <div
+      style={{
+        display: "inline-block",
+        marginLeft: "100px",
+        justifyContent: "center",
+        textAlign: "left",
+        width: "400px",
+      }}
+    >
       <h1>Movie List</h1>
       {movies.map((item, index) => {
         return (
           <div key={index}>
-            {item.title}
-            <button onClick={() => movieSelected(item)}>Details</button>
+            <span>{item.title}</span>
+            <button
+              style={{ float: "right" }}
+              onClick={() => {
+                movieSelected(item);
+              }}
+            >
+              Details
+            </button>
           </div>
         );
       })}
