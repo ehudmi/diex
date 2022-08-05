@@ -1,12 +1,17 @@
-const transactionReducer = (state, action) => {
+let initialState = {
+  currentIndex: -1,
+  list: [],
+};
+
+const transactionReducer = (state = initialState, action) => {
   switch (action.type) {
     case "INSERT":
-      console.log(action.payload, state.list, state.currentIndex);
-      if (state.list !== null) {
-        return state.list.push(action.payload);
-      } else
-        return { list: [action.payload], currentIndex: state.currentIndex + 1 };
+      // console.log(action.payload, state.list, state.currentIndex);
+      // console.log("I'm in the reducer", action.payload);
+      state.list.push(action.payload);
+      return { ...state, currentIndex: state.currentIndex + 1 };
     case "UPDATE":
+      console.log("I'm in the reducer", action.payload);
       return (state.list[state.currentIndex] = action.payload);
     // state.list.map((val, index) =>
     //   index === state.currentIndex ? (val = action.payload) : null

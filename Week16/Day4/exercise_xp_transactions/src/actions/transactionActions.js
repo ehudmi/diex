@@ -1,4 +1,5 @@
 const insertAction = (data) => {
+  // console.log("I'm in action", data);
   return {
     type: "INSERT",
     payload: data,

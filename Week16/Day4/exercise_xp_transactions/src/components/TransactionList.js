@@ -10,6 +10,7 @@ class TransactionList extends Component {
     this.state = {};
   }
   handleEdit = (index) => {
+    console.log(index);
     this.props.updateIndexTransaction(index);
   };
   handleDelete = (index) => {

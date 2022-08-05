@@ -8,21 +8,21 @@ import React, { Component } from "react";
 class TransactionForm extends Component {
   constructor(props) {
     super(props);
-    if (props.currentIndex === -1) {
-      this.state = { accountNumber: "", Fsc: "", name: "", amount: "" };
-    } else {
-      this.state = { ...props };
-    }
+    // if (props.currentIndex === -1) {
+    //   this.state = { accountNumber: "", Fsc: "", name: "", amount: "" };
+    // } else {
+    //   this.state = { ...props };
+    // }
+    this.state = { accountNumber: "", Fsc: "", name: "", amount: "" };
   }
   handleInputChange = (event) => {
     this.setState({ [event.target.name]: event.target.value });
-    // console.log(`did ${event.target.value}`);
-    // console.log(this.state.accountNumber);
   };
 
   handleSubmit = (event) => {
     event.preventDefault();
     this.props.insertTransaction(this.state);
+    console.log(this.state);
     // console.log("working on it");
   };
 
