@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route, Link, Navigate } from "react-router-dom";
 import "./App.css";
 import SearchBox from "./components/SearchBox";
 import PhotoPage from "./containers/PhotoPage";
@@ -38,7 +38,7 @@ class App extends Component {
     // console.log(json);
     this.setState({ images: json });
     localStorage.setItem("selected", JSON.stringify(this.state.selected));
-    // console.log(this.state);
+    console.log(this.state);
   };
   componentDidMount() {
     const retrieve = JSON.parse(localStorage.getItem("selected"));
@@ -71,7 +71,20 @@ class App extends Component {
 
           <Routes>
             <Route
+              path="/"
+              element={<Navigate to={this.state.selected.path} />}
+            />
+            {/* <Route
               path={this.state.selected.path}
+              element={
+                <PhotoPage
+                  images={this.state.images}
+                  perPage={this.state.perPage}
+                />
+              }
+            /> */}
+            <Route
+              path=":query"
               element={
                 <PhotoPage
                   images={this.state.images}
