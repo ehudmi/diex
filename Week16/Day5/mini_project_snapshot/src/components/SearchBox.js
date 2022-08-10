@@ -10,13 +10,16 @@ function SearchBox(props) {
           event.preventDefault();
           props.getPics(
             event.target.searchInput.value,
-            `/${event.target.searchInput.value.toLowerCase()}`
+            `/${event.target.searchInput.value.toLowerCase()}`,
+            props.number
           );
           navigate(`/${event.target.searchInput.value.toLowerCase()}`);
         }}
       >
         <input name="searchInput" type={"text"} />
-        <button type="submit">Search</button>
+        <button className="searchButton" type="submit">
+          Search
+        </button>
       </form>
     </div>
   );

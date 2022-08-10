@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Routes, Route, Link, Navigate } from "react-router-dom";
 import "./App.css";
+import Pagination from "./components/Pagination";
 import SearchBox from "./components/SearchBox";
 import PhotoPage from "./containers/PhotoPage";
 
@@ -16,16 +17,15 @@ class App extends Component {
       ],
       baseUrl: "https://api.pexels.com/v1/",
       apiKey: "563492ad6f917000010000018a2cae379ad74b33828c5b5f67df8468",
-      perPage: 3,
-      selected: { name: "Mountain", path: "/mountain" },
+      selected: { name: "Mountain", path: "/mountain", perPage: 12 },
     };
   }
-  getPics = async (topic, path) => {
-    this.setState({ selected: { name: topic, path: path } });
+  getPics = async (topic, path, number) => {
+    this.setState({ selected: { name: topic, path: path, perPage: number } });
     const response = await fetch(
-      `${this.state.baseUrl}search?query=${topic.toLowerCase()}&per_page=${
-        this.state.perPage
-      }`,
+      `${
+        this.state.baseUrl
+      }search?query=${topic.toLowerCase()}&per_page=${number}`,
       {
         method: "GET",
         headers: {
@@ -38,12 +38,13 @@ class App extends Component {
     this.setState({ images: json });
     localStorage.setItem("selected", JSON.stringify(this.state.selected));
   };
+
   componentDidMount() {
     if (!localStorage.getItem("selected")) {
-      this.getPics("Mountain", "/mountain");
+      this.getPics("Mountain", "/mountain", 12);
     } else {
       const retrieve = JSON.parse(localStorage.getItem("selected"));
-      this.getPics(retrieve.name, retrieve.path);
+      this.getPics(retrieve.name, retrieve.path, retrieve.perPage);
     }
   }
 
@@ -53,20 +54,30 @@ class App extends Component {
     } else
       return (
         <div className="App">
-          <SearchBox getPics={this.getPics} />
-          {this.state.links.map((item, index) => {
-            return (
-              <Link
-                key={index}
-                to={item.name.toLowerCase()}
-                onClick={() => {
-                  this.getPics(item.name, item.path);
-                }}
-              >
-                {item.name}
-              </Link>
-            );
-          })}
+          <h1>SnapShots</h1>
+          <SearchBox
+            getPics={this.getPics}
+            number={this.state.selected.perPage}
+          />
+          <div className="links">
+            {this.state.links.map((item, index) => {
+              return (
+                <Link
+                  key={index}
+                  to={item.name.toLowerCase()}
+                  onClick={() => {
+                    this.getPics(
+                      item.name,
+                      item.path,
+                      this.state.selected.perPage
+                    );
+                  }}
+                >
+                  {item.name}
+                </Link>
+              );
+            })}
+          </div>
           <Routes>
             <Route
               path="/"
@@ -77,11 +88,18 @@ class App extends Component {
               element={
                 <PhotoPage
                   images={this.state.images}
-                  perPage={this.state.perPage}
+                  perPage={this.state.selected.perPage}
                 />
               }
             />
           </Routes>
+          <div className="pagination">
+            <Pagination
+              getPics={this.getPics}
+              topic={this.state.selected.name}
+              path={this.state.selected.path}
+            />
+          </div>
         </div>
       );
   }
