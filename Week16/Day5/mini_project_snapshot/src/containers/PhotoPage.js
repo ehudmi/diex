@@ -4,7 +4,6 @@ function PhotoPage(props) {
   if (!props.images) {
     return <div>Say What?</div>;
   } else {
-    console.log(props);
     return (
       <div>
         <h1>Hi</h1>

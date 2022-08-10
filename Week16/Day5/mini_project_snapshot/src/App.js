@@ -35,15 +35,16 @@ class App extends Component {
       }
     );
     const json = await response.json();
-    // console.log(json);
     this.setState({ images: json });
     localStorage.setItem("selected", JSON.stringify(this.state.selected));
-    console.log(this.state);
   };
   componentDidMount() {
-    const retrieve = JSON.parse(localStorage.getItem("selected"));
-    console.log(retrieve.name);
-    this.getPics(retrieve.name, retrieve.path);
+    if (!localStorage.getItem("selected")) {
+      this.getPics("Mountain", "/mountain");
+    } else {
+      const retrieve = JSON.parse(localStorage.getItem("selected"));
+      this.getPics(retrieve.name, retrieve.path);
+    }
   }
 
   render() {
@@ -59,30 +60,18 @@ class App extends Component {
                 key={index}
                 to={item.name.toLowerCase()}
                 onClick={() => {
-                  // console.log(this.state);
                   this.getPics(item.name, item.path);
-                  // console.log(this.state.selectedPath);
                 }}
               >
                 {item.name}
               </Link>
             );
           })}
-
           <Routes>
             <Route
               path="/"
               element={<Navigate to={this.state.selected.path} />}
             />
-            {/* <Route
-              path={this.state.selected.path}
-              element={
-                <PhotoPage
-                  images={this.state.images}
-                  perPage={this.state.perPage}
-                />
-              }
-            /> */}
             <Route
               path=":query"
               element={

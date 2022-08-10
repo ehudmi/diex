@@ -11,10 +11,12 @@ const updateAction = (data) => {
     payload: data,
   };
 };
-const deleteAction = (id) => {
+const deleteAction = (index) => {
+  console.log(index);
+  console.log("actions.js");
   return {
     type: "DELETE",
-    payload: id,
+    payload: index,
   };
 };
 const updateIndexAction = (index) => {
