@@ -1,29 +1,20 @@
 // import React from "react";
 import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
-import { insertAction, updateAction } from "../actions/transactionActions";
-
+import { insertAction, updateAction } from "../redux/transactionActions";
 import React, { Component } from "react";
 
 class TransactionForm extends Component {
   constructor(props) {
     super(props);
-    // if (props.currentIndex === -1) {
-    //   this.state = { accountNumber: "", Fsc: "", name: "", amount: "" };
-    // } else {
-    //   this.state = { ...props };
-    // }
     this.state = { accountNumber: "", Fsc: "", name: "", amount: "" };
   }
   handleInputChange = (event) => {
     this.setState({ [event.target.name]: event.target.value });
   };
 
-  handleSubmit = (event) => {
-    event.preventDefault();
+  handleSubmit = () => {
     this.props.insertTransaction(this.state);
-    console.log(this.state);
-    // console.log("working on it");
+    localStorage.setItem("transactions", JSON.stringify(this.state));
   };
 
   render() {
@@ -67,13 +58,10 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators(
-    {
-      insertTransaction: insertAction,
-      updateTransaction: updateAction,
-    },
-    dispatch
-  );
+  return {
+    insertTransaction: (val) => dispatch(insertAction(val)),
+    updateTransaction: (val) => dispatch(updateAction(val)),
+  };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(TransactionForm);
